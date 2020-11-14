@@ -1,5 +1,5 @@
 #!/bin/bash
-# Este Script es el mismo del autor James A. Chambers a diferencia quefue traducido al español (This Script is the same as that of the author James A. Chambers, unlike that it was translated into Spanish.)
+# Este Script es el mismo del autor James A. Chambers a diferencia que fue traducido al español (This Script is the same as that of the author James A. Chambers, unlike that it was translated into Spanish.)
 # Script de instalación del servidor de Minecraft - James A. Chambers - https://jamesachambers.com
 #
 # Instrucciones: https://jamesachambers.com/minecraft-bedrock-edition-ubuntu-dedicated-server-guide/
