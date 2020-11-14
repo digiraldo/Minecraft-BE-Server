@@ -29,7 +29,7 @@ function read_with_prompt {
     if [[ -z ${!variable_name} ]] && [[ -n "$default" ]] ; then
       declare -g $variable_name=$default
     fi
-    echo -n "$prompt : ${!variable_name} -- accept (y/n)?"
+    echo -n "$prompt : ${!variable_name} -- aceptar (y/n)?"
     read answer < /dev/tty
     if [ "$answer" == "${answer#[Yy]}" ]; then
       unset $variable_name
@@ -125,7 +125,7 @@ if [ -d "$ServerName" ]; then
   sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
   sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
-  echo -n "Start Minecraft server at startup automatically (y/n)?"
+  echo -n "¿Iniciar el servidor de Minecraft automáticamente (y/n)?"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
     sudo systemctl enable $ServerName.service
