@@ -23,13 +23,12 @@ rclone config
 ```
 **Ahora, entre las opciones, introduciremos n, para crear una nueva cuenta en Rclone:**
 
-`
-No remotes found - make a new one  
-n) New remote  
-s) Set configuration password  
-q) Quit config  
-n/s/q>
-` 
+
+`No remotes found - make a new one`  
+`n) New remote`  
+`s) Set configuration password`  
+`q) Quit config`  
+`n/s/q>` 
 
 **Nos pedirá que le pongamos un nombre (yo le he puesto drive)**
 
@@ -37,15 +36,14 @@ n/s/q>
 
 **Nos saldrá el gran listado de nubes públicas:**
 
-`
-Type of storage to configure.  
-Enter a string value. Press Enter for the default ("").  
-Choose a number from below, or type in your own value
+`Type of storage to configure.`  
+`Enter a string value. Press Enter for the default ("").`  
+`Choose a number from below, or type in your own value`
 
-13 / Google Drive  
-   \ "drive"  
+`3 / Google Drive`  
+`   \ "drive"`  
 
-Storage>  
+`Storage> 
    `
 
 * Introducimos el número de la nube. En esta versión de RClone hay que introducir el número 13, correspondiente a Google Drive `Storage>13` y seguimos con el proceso.
@@ -53,8 +51,8 @@ Storage>
 Pregunta: `client_id> y client_secret>` , las dejamos por defecto en blanco pulsando Intro
 
 Después pide el tipo de acceso: `scope>` , le doy acceso completo con el número 1 que es el acceso de lectura y escritura.  
-`1 / Full access all files, excluding Application Data Folder.  
-   \ "drive"`
+`1 / Full access all files, excluding Application Data Folder.`  
+`   \ "drive"`
 
 A los siguientes: `root_folder_id>` y `service_account_file>` las dejamos por defecto en blanco pulsando Intro
 
@@ -75,19 +73,18 @@ Como estoy instalando RClone remotamente desde un terminal SSH, copiamos y pegam
 
 Se nos abrirá la información donde nos indica **Elegir una cuenta para ir a rclone**, Elegimos o introducimos usuario y contraseña de la cuenta de Google Drive y después nos pedirá los permisos:
 
-`
-rclone desea acceder a tu Cuenta de Google
-`
-nombrecuenta@gmail.com  
-Esta acción permitirá que rclone haga lo siguiente:
-`
+`rclone desea acceder a tu Cuenta de Google`  
+`nombrecuenta@gmail.com`  
+`Esta acción permitirá que rclone haga lo siguiente:`
+
 Ver, editar y borrar todos tus archivos de Google Drive le damos a conceder permisos de acceso a Rclone a nuestro Drive
-`
+
 
 Hacemos click en *permitir* y nos saldrá el token o código de autorización
-`Acceder  
-Copia este código, cambia a tu aplicación y pégalo allí:  
-4/1Y0e-g4Ukgtt8smIVgVgkwg4CtXHdcDPIfdRnWrQMOFpK2BV2hSuJbyZNIA00Frjxs`
+
+`Acceder`  
+`Copia este código, cambia a tu aplicación y pégalo allí:`  
+`4/1Y0e-g4Ukgtt8smIVgVgkwg4CtXHdcDPIfdRnWrQMOFpK2BV2hSuJbyZNIA00Frjxs`
 
 Copiamos el token que nos proporciona Google y volvemos a la terminal donde lo copiaremos:
 
@@ -97,19 +94,17 @@ En `Configure this as a team drive?` , escribimos n
 
 Si contamos con un disco de team drive o *Unidades compartidas* en nuestra cuenta de Google Drive y queremos usarlo, escribiremos **s**, de lo contrario escribimos **n** donde utilizaré *Mi unidad* de Google Drive.
 
-`
-[drive]  
-type = drive  
-scope = drive  
-(y) Yes this is OK (default)`
+`[drive]`  
+`type = drive`  
+`scope = drive`  
+`(y) Yes this is OK (default)`
 
 Escribimos y luego enter y nos saldrá nuestra unidad que hemos montado configurada y sus parámetros:
 
-`Current remotes:
-``
-Name                 Type  
-====                 ====  
-drive                drive`
+`Current remotes:`  
+`Name-----------------Type`  
+`====                 ====`  
+`drive----------------drive`
 
 Salimos escribiendo q
 
