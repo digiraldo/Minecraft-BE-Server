@@ -24,15 +24,15 @@ Se recomienda usar Ubuntu Server para ejecutar el servidor dedicado de Minecraft
 
 Una vez tenga su Computador o Servidor Virtual VPS, Inicie sesión en su servidor Linux usando SSH con un mouse y teclado copie y pegue el siguiente comando:
 
-wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
+*wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
 chmod +x SetupMinecraft.sh  
-./SetupMinecraft.sh
+./SetupMinecraft.sh*
 
 Si no instala intente proporcionando acceso administrativo con `sudo` así:
 
-sudo wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
+*sudo wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
 sudo chmod +x SetupMinecraft.sh  
-./SetupMinecraft.sh
+./SetupMinecraft.sh*
 
 El script configurará el servidor de Minecraft y le hará algunas preguntas sobre cómo configurarlo. Explicaré aquí lo que significan.
 
@@ -54,22 +54,49 @@ El script configurará el servidor de Minecraft y le hará algunas preguntas sob
 
 Y listo, solo deben ubicar la IP de su servidor o Computador y el puerto 19132, que en la mayoría de los casos es el IPV4.
 
-## Iniciar, detener y reiniciar el servidor:
-
+## Iniciar, detener y reiniciar el servidor
 El servidor se puede iniciar, detener y reiniciar de dos formas diferentes. Puede usar los scripts proporcionados en la carpeta de Minecraft o puede usar systemctl. Aquí están los comandos:
 
-cd ~/minecraftbe/nombredelservidor:
+*cd ~/minecraftbe/nombredelservidor
 
 ./start.sh  
 ./stop.sh  
-./restart.sh    
+./restart.sh*    
 
 Ó
 
-sudo systemctl start minecraftbe  
+*sudo systemctl start minecraftbe  
 sudo systemctl stop minecraftbe  
-sudo systemctl restart minecraftbe
+sudo systemctl restart minecraftbe*  
 
+
+## Backups automáticos
+El servidor realiza una copia de seguridad cada vez que se inicia. Esto le ayuda a recuperarse fácilmente si algo sale mal. Este sistema funciona mejor si configuró el servidor para que se reinicie diariamente, ya que significa que tendrá una copia de seguridad todos los días.
+
+Para acceder a estas copias de seguridad, escriba:
+
+*cd ~/minecraftbe/nombredelservidor/backups  
+ls -lt*
+
+
+Cuando se realiza una copia de seguridad, el nombre del archivo será la fecha y la hora en que se realizó la copia de seguridad. Si necesita restaurar una copia de seguridad de su mundo, es muy fácil. Sustituya la marca de tiempo en mi ejemplo por la copia de seguridad a la que desea retroceder. Tipo:
+
+*cd ~/minecraftbe/nombredelservidor  
+./stop.sh  
+rm -rf worlds  
+tar -xf backups/13.11.2020_22.06.30_Mundo.tar.gz  
+./start.sh*  
+
+¡Tu mundo ahora ha sido restaurado! Es una buena idea descargar estas copias de seguridad del servidor periódicamente en caso de que falle el almacenamiento del servidor.
+
+#
+#
+#
+#
+#
+#
+#
+#
 ==============================
 
 *Aviso de Derechos `(copyright notice)`:*  
