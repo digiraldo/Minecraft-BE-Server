@@ -32,9 +32,11 @@ if [ -d "worlds" ]; then
     tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_World).tar.gz worlds
 fi
 
-# Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)
-# Tutorial de instalaciuon de RCone y fuse: 
-# rsync -avz backups/ /home/drive/minecraft/
+#Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
+#Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
+echo "Creando copia de seguridad en la nube ..."
+
+rsync -avz backups/ /home/drive/Servidor/minecraft/
 
 # Recupere la última versión del servidor dedicado Minecraft Bedrock
 echo "Buscando la última versión del servidor Minecraft Bedrock ..."
