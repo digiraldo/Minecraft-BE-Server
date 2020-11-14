@@ -54,6 +54,23 @@ El script configurará el servidor de Minecraft y le hará algunas preguntas sob
 
 Y listo, solo deben ubicar la IP de su servidor o Computador y el puerto 19132, que en la mayoría de los casos es el IPV4.
 
+## Iniciar, detener y reiniciar el servidor:
+
+El servidor se puede iniciar, detener y reiniciar de dos formas diferentes. Puede usar los scripts proporcionados en la carpeta de Minecraft o puede usar systemctl. Aquí están los comandos:
+
+cd ~/minecraftbe/nombredelservidor:
+
+./start.sh  
+./stop.sh  
+./restart.sh    
+
+Ó
+
+sudo systemctl start minecraftbe  
+sudo systemctl stop minecraftbe  
+sudo systemctl restart minecraftbe
+
+==============================
 
 *Aviso de Derechos `(copyright notice)`:*  
 Este software y los archivos de documentación asociados fueron realizados por:  
