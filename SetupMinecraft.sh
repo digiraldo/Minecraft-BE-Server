@@ -29,7 +29,7 @@ function read_with_prompt {
     if [[ -z ${!variable_name} ]] && [[ -n "$default" ]] ; then
       declare -g $variable_name=$default
     fi
-    echo -n "$prompt : ${!variable_name} -- aceptar (y/n)?"
+    echo -n "$prompt : ${!variable_name} -- aceptar? (y/n)"
     read answer < /dev/tty
     if [ "$answer" == "${answer#[Yy]}" ]; then
       unset $variable_name
@@ -125,13 +125,13 @@ if [ -d "$ServerName" ]; then
   sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
   sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
-  echo -n "¿Iniciar el servidor de Minecraft automáticamente (y/n)?"
+  echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
     sudo systemctl enable $ServerName.service
 
     # Reinicio automático configurado a las 4 am
-    echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días (y/n)?"
+    echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="$DirName/minecraftbe/$ServerName/restart.sh"
@@ -251,7 +251,7 @@ sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
 sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
 
-echo -n "¿Iniciar el servidor de Minecraft automáticamente (y/n)?"
+echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)"
 read answer < /dev/tty
 if [ "$answer" != "${answer#[Yy]}" ]; then
   sudo systemctl enable $ServerName.service
@@ -261,7 +261,7 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
   CurrentTime=$(date)
   echo "Su zona horaria está configurada actualmente en $TimeZone.  Hora actual del sistema: $CurrentTime"
   echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente."
-  echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días (y/n)"
+  echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
     croncmd="$DirName/minecraftbe/$ServerName/restart.sh"
