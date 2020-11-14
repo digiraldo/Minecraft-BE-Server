@@ -8,7 +8,9 @@ Para aquellos que tienen un servidor dedicado de Minecraft y no quieren utilizar
 
 Inicie sesión en su servidor Linux usando SSH con un ratón y teclado copie y pegue el siguiente comando en la terminal:
 
-```curl https://rclone.org/install.sh | sudo bash```
+```
+curl https://rclone.org/install.sh | sudo bash
+```
 
 **Vamos a configurar RClone para que trabaje con nuestra nube de Google Drive**
 
@@ -16,7 +18,9 @@ Rclone dispone de un listado amplio de nubes públicas.
 
 Para utilizar una cuenta en rclone, teclearemos en nuestra terminal:
 
-```rclone config```
+```
+rclone config
+```
 
 **Ahora, entre las opciones, introduciremos n, para crear una nueva cuenta en Rclone:**
 
@@ -110,16 +114,22 @@ Ya tenemos configurada la Unidad con acceso a los archivos de la nube, el siguie
 
 Vamos a montar la nube pública en nuestro servidor, como si fuera una unidad de disco duro. Para ello, necesitamos instalar Fuse si no lo tenemos instalado.
 
-```sudo apt-get install fuse```
+```
+sudo apt-get install fuse
+```
 
 Luego crearemos la carpeta drive con el mismo nombre que la nube en RClone para evitar confusiones. Nos ubicamos en el `/home$` de nuestro Servidor y crearemos la carpeta con:
 
 
-```sudo mkdir /home/drive```
+```
+sudo mkdir /home/drive
+```
 
 Y configuramo fuse escribiendo en el terminal:
 
-```sudo nano /etc/fuse.conf```
+```
+sudo nano /etc/fuse.conf
+```
 
 Vamos a la línea final y quitamos los #
 
@@ -134,17 +144,23 @@ quedando de la siguiente manera con un espacio al comienzo de Allow
 
 Ahora vamos a configurar crontab para auto montar la nube al iniciar el sistema operativo escribiendo en el terminal:
 
-```crontab -e```
+```
+crontab -e
+```
 
 introducimos `1` para editarn con nano
 
 Al final de escribimos los siguiente:
 
-```@reboot rclone mount drive: /home/drive --allow-other &```
+```
+@reboot rclone mount drive: /home/drive --allow-other &
+```
 
 Reiniciamos nuestro servidor:
 
-```sudo reboot```
+```
+sudo reboot
+```
 
 Ya lo tenemos todo listo, solo vamos a nuestra carpeta drive y veremos los archivos que tengamos en `Mi Unidad` de Google Drive en ```/home/pi/drive```
 
@@ -174,13 +190,9 @@ Buscamos y modificamos la siguiente línea
 Quitamos el # en ```#rsync -avz backups/ /home/drive/Servidor/minecraft/```, quedando de la siguiente manera:
 
 
-```
-#Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)```  
-```
-#Tutorial de instalación de RCone y fuse:https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md```  
+```#Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)```  
+```#Tutorial de instalación de RCone y fuse:https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md```  
 
-```
-rsync -avz backups/ /home/drive/Servidor/minecraft/
-```
+```rsync -avz backups/ /home/drive/Servidor/minecraft/```
 
 Esto realizara las copias de seguridad automáticas cuando se reinicia el servidor todos los días a las 4 am en `Mi unidad > Servidor > minecraft` en la Cuenta de Google Drive sincronizada.
