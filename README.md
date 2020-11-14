@@ -57,5 +57,5 @@ Y listo, solo deben ubicar la IP de su servidor o Computador y el puerto 19132, 
 
 ## Aviso de Derechos `(copyright notice)`:
 Este software y los archivos de documentación asociados fueron realizados por:
-Derechos de autor (c) 2019 James A. Chambers @
+Derechos de autor (c) 2019 James A. Chambers
 Este tutorial fue realizado para ayudar a la comunidad en Español al exixtir poca información de instalación y configuracion en este idioma. Para más información y soporte, el repositorio en su idioma original inglés: https://github.com/TheRemote/MinecraftBedrockServer
