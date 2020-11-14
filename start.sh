@@ -29,7 +29,7 @@ cd dirname/minecraftbe/servername
 # Crear copia de seguridad
 if [ -d "worlds" ]; then
     echo "Copia de seguridad del servidor (en la carpeta minecraftbe/servername/backups)"
-    tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_$ServerName).tar.gz worlds
+    tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_World).tar.gz worlds
 fi
 
 # Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)
