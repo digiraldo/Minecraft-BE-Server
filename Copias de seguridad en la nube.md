@@ -97,9 +97,9 @@ Escribimos y luego enter y nos saldrá nuestra unidad que hemos montado configur
 
 `Current remotes:`
 
-`Name`       `Type`
-`====`       `====`
-`drive`      `drive`
+`Name`           `Type`  
+`====`           `====`  
+`drive`          `drive`
 
 Salimos escribiendo `q`
 
