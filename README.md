@@ -69,7 +69,7 @@ cd ~/minecraftbe/nombredelservidor
 ./restart.sh
 ```
 
-Ó
+ó
 
 ```sudo systemctl start minecraftbe  
 sudo systemctl stop minecraftbe  
