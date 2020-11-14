@@ -150,3 +150,28 @@ Ya lo tenemos todo listo, solo vamos a nuestra carpeta drive y veremos los archi
 
 
 ## 3. Configuracion del servidor
+
+Nos dirigimos a la carpeta del servidor Minecraft:
+
+```cd ~/minecraftbe/nombredelservidor/```
+
+Editamos el archivo `start.sh` con el editor de texto nano
+
+```sudo nano start.sh```
+
+Buscamos y modificamos la siguiente línea
+
+```#Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)```  
+```#Tutorial de instalación de RCone y fuse:https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md```  
+
+```#rsync -avz backups/ /home/drive/Servidor/minecraft/```
+
+Quitamos el # en ```#rsync -avz backups/ /home/drive/Servidor/minecraft/```, quedando de la siguiente manera:
+
+
+```#Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)```  
+```#Tutorial de instalación de RCone y fuse:https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md```  
+
+```rsync -avz backups/ /home/drive/Servidor/minecraft/```
+
+Esto realizara las copias de seguridad automáticas cuando se reinicia el servidor todos los días a las 4 am en `Mi unidad > Servidor > minecraft` en la Cuenta de Google Drive sincronizada.
