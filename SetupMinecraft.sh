@@ -69,10 +69,10 @@ else
 fi
 
 # Configuración del nombre del servidor
-echo "Ingrese un nombre corto para el servidor nuevo o existente ..."
+echo "Ingrese un nombre corto para el servidor nuevo o existente..."
 echo "Se utilizará como nombre de la carpeta y el nombre del servicio..."
 
-read_with_prompt ServerName "Server Label"
+read_with_prompt ServerName "Nombre de Servidor"
 
 echo "Introduzca el puerto IPV4 del servidor (predeterminado 19132): "
 read_with_prompt PortIPV4 "Puerto IPV4 del servidor" 19132
@@ -81,7 +81,7 @@ echo "Introduzca el puerto IPV6 del servidor (predeterminado 19133): "
 read_with_prompt PortIPV6 "Puerto IPV6 del servidor" 19133
 
 if [ -d "$ServerName" ]; then
-  echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio ..."
+  echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio..."
 
   # Get Home directory path and username
   DirName=$(readlink -e ~)
