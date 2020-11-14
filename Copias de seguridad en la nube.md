@@ -102,9 +102,9 @@ Si contamos con un disco de team drive o *Unidades compartidas* en nuestra cuent
 Escribimos y luego enter y nos saldrá nuestra unidad que hemos montado configurada y sus parámetros:
 
 `Current remotes:`  
-`Name-----------------Type`  
-`====                 ====`  
-`drive----------------drive`
+`Name_____Type`  
+`====_____====`  
+`drive____drive`
 
 Salimos escribiendo q
 
