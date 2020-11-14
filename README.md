@@ -25,13 +25,13 @@ Se recomienda usar Ubuntu Server para ejecutar el servidor dedicado de Minecraft
 Una vez tenga su Computador o Servidor Virtual VPS, Inicie sesión en su servidor Linux usando SSH con un mouse y teclado copie y pegue el siguiente comando:
 
 wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
-chmod + x SetupMinecraft.sh  
+chmod +x SetupMinecraft.sh  
 ./SetupMinecraft.sh
 
 Si no instala intente proporcionando acceso administrativo con `sudo` así:
 
 sudo wget https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/SetupMinecraft.sh  
-sudo chmod + x SetupMinecraft.sh  
+sudo chmod +x SetupMinecraft.sh  
 ./SetupMinecraft.sh
 
 El script configurará el servidor de Minecraft y le hará algunas preguntas sobre cómo configurarlo. Explicaré aquí lo que significan.
