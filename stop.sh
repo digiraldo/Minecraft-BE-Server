@@ -1,5 +1,5 @@
 #!/bin/bash
-Este Script es el mismo del autor James A. Chambers a diferencia que fue traducido al español (This Script is the same as that of the author James A. Chambers, unlike that it was translated into Spanish.)
+# Este Script es el mismo del autor James A. Chambers a diferencia que fue traducido al español (This Script is the same as that of the author James A. Chambers, unlike that it was translated into Spanish.)
 # James Chambers
 # Secuencia de comandos de detención de Minecraft Server: llamado principalmente por el servicio de Minecraft, pero se puede ejecutar manualmente
 
