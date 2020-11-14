@@ -68,7 +68,9 @@ Enter verification code>`
 
 Como estoy instalando RClone remotamente desde un terminal SSH, copiamos y pegamos en nuestro navegador web la url larga que nos aparece en el terminal, en este caso es la siguiente url:
 
-`https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=b1MNpS32JLYwxrH1CtonQhz34F356`
+Please go to the following link: **`https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=b1MNpS32JLYwxrH1CtonQhz34F356`**
+Log in and authorize rclone for access
+Enter verification code>
 
 
 Se nos abrirá la información donde nos indica **Elegir una cuenta para ir a rclone**, Elegimos o introducimos usuario y contraseña de la cuenta de Google Drive y después nos pedirá los permisos:
