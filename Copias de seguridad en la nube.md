@@ -52,7 +52,7 @@ Pregunta: `client_id> y client_secret>` , las dejamos por defecto en blanco puls
 
 Después pide el tipo de acceso: `scope>` , le doy acceso completo con el número 1 que es el acceso de lectura y escritura.  
 `1 / Full access all files, excluding Application Data Folder.`  
-`   \ "drive"`
+  `\ "drive"`
 
 A los siguientes: `root_folder_id>` y `service_account_file>` las dejamos por defecto en blanco pulsando Intro
 
