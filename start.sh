@@ -5,7 +5,7 @@
 
 # Compruebe si el servidor ya está iniciado
 if screen -list | grep -q "servername"; then
-    echo "¡El servidor ya está iniciado! Presione la pantalla -r nombre del servidor para abrirlo"
+    echo "¡El servidor ya está iniciado! para abrirlo escriba: screen -r (aquí nombre del servidor sin parentesis)"
     exit 1
 fi
 
@@ -60,6 +60,6 @@ else
     fi
 fi
 
-echo "Iniciando el servidor de Minecraft. Para ver la ventana, escriba la pantalla -r nombre del servidor"
-echo "Para minimizar la ventana y dejar que el servidor se ejecute en segundo plano, presione Ctrl+A then Ctrl+D"
+echo "Iniciando el servidor de Minecraft. Para ver el inicio, escriba en el terminal: screen -r (aquí nombre del servidor sin parentesis)"
+echo "Para minimizar la ventana y dejar que el servidor se ejecute en segundo plano, presione Ctrl+A luego Ctrl+D"
 screen -L -Logfile logs/$(date +%d.%m.%Y_%H.%M.%S).log -dmS servername /bin/bash -c "LD_LIBRARY_PATH=dirname/minecraftbe/servername dirname/minecraftbe/servername/bedrock_server"
