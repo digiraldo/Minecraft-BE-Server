@@ -40,8 +40,8 @@ n/s/q>
 `
 Type of storage to configure.  
 Enter a string value. Press Enter for the default ("").  
-Choose a number from below, or type in your own value  
- 
+Choose a number from below, or type in your own value
+
 13 / Google Drive  
    \ "drive"  
 
@@ -85,32 +85,30 @@ Ver, editar y borrar todos tus archivos de Google Drive le damos a conceder perm
 `
 
 Hacemos click en *permitir* y nos saldrá el token o código de autorización
-`Acceder
-Copia este código, cambia a tu aplicación y pégalo allí:
+`Acceder  
+Copia este código, cambia a tu aplicación y pégalo allí:  
 4/1Y0e-g4Ukgtt8smIVgVgkwg4CtXHdcDPIfdRnWrQMOFpK2BV2hSuJbyZNIA00Frjxs`
 
 Copiamos el token que nos proporciona Google y volvemos a la terminal donde lo copiaremos:
+
 `Enter verification code> 4/1Y0e-g4Ukgtt8smIVgVgkwg4CtXHdcDPIfdRnWrQMOFpK2BV2hSuJbyZNIA00Frjxs`
 
 En `Configure this as a team drive?` , escribimos n
 
 Si contamos con un disco de team drive o *Unidades compartidas* en nuestra cuenta de Google Drive y queremos usarlo, escribiremos **s**, de lo contrario escribimos **n** donde utilizaré *Mi unidad* de Google Drive.
 
-
-
-E
-`--------------------  
+`
 [drive]  
 type = drive  
-scope = drive
-y) Yes this is OK (default)`
+scope = drive  
+(y) Yes this is OK (default)`
 
 Escribimos y luego enter y nos saldrá nuestra unidad que hemos montado configurada y sus parámetros:
 
 `Current remotes:
 ``
-Name                 Type
-====                 ====
+Name                 Type  
+====                 ====  
 drive                drive`
 
 Salimos escribiendo q
@@ -139,14 +137,15 @@ Y configuramo fuse escribiendo en el terminal:
 sudo nano /etc/fuse.conf
 ```
 
-* Vamos a la línea final y quitamos los #  
+* Vamos a la línea final y quitamos los #
+
 `# Allow non-root users to specify the allow_other or allow_root mount options.  
 #user_allow_other`  
 
 quedando de la siguiente manera con un espacio al comienzo de Allow
 
- `Allow non-root users to specify the allow_other or allow_root mount options. ` 
-`user_allow_other` 
+ `Allow non-root users to specify the allow_other or allow_root mount options.  
+ user_allow_other` 
 
 
 * Ahora vamos a configurar crontab para auto montar la nube al iniciar el sistema operativo escribiendo en el terminal:
