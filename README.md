@@ -43,19 +43,19 @@ El script configurará el servidor de Minecraft y le hará algunas preguntas sob
 
 *Eso es todo para el script de configuración. ¡El servidor terminará de configurarse y arrancará! comenzará a mostrar resultados en la consola, las líneas son:*
 
-**Starting Server**, Iniciando Servidor
-**Version 1.16.40.2**, Versión del Juego
-**Level Name: Bedrock level**, Nombre del nivel predeterminado
-**Game mode: 0 Survival**, Modo de Juego Sobreviviente predeterminado
-**Difficulty: 1 EASY**, Dificultad del juego Fácil.
-**IPv4 supported, port: 19132**, Número de puerto para IP versión 4 predeterminado
-**IPv6 supported, port: 19133**, Número de puerto para IP versión 6 predeterminado
+**Starting Server**, Iniciando Servidor  
+**Version 1.16.40.2**, Versión del Juego  
+**Level Name: Bedrock level**, Nombre del nivel predeterminado  
+**Game mode: 0 Survival**, Modo de Juego Sobreviviente predeterminado  
+**Difficulty: 1 EASY**, Dificultad del juego Fácil.  
+**IPv4 supported, port: 19132**, Número de puerto para IP versión 4 predeterminado  
+**IPv6 supported, port: 19133**, Número de puerto para IP versión 6 predeterminado  
 **Server started**, podrá conectarse desde el cliente.
 
 Y listo, solo deben ubicar la IP de su servidor o Computador y el puerto 19132, que en la mayoría de los casos es el IPV4.
 
 
-## Aviso de Derechos `(copyright notice)`:
-Este software y los archivos de documentación asociados fueron realizados por:
-Derechos de autor (c) 2019 James A. Chambers
+### Aviso de Derechos `(copyright notice)`:  
+Este software y los archivos de documentación asociados fueron realizados por:  
+Derechos de autor (c) 2019 James A. Chambers  
 Este tutorial fue realizado para ayudar a la comunidad en Español al exixtir poca información de instalación y configuracion en este idioma. Para más información y soporte, el repositorio en su idioma original inglés: https://github.com/TheRemote/MinecraftBedrockServer
