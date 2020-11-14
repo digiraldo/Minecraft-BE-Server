@@ -24,10 +24,10 @@ rclone config
 **Ahora, entre las opciones, introduciremos n, para crear una nueva cuenta en Rclone:**
 
 `
-No remotes found - make a new one
-n) New remote
-s) Set configuration password
-q) Quit config
+No remotes found - make a new one  
+n) New remote  
+s) Set configuration password  
+q) Quit config  
 n/s/q>
 ` 
 
@@ -38,85 +38,13 @@ n/s/q>
 **Nos saldrá el gran listado de nubes públicas:**
 
 `
-Type of storage to configure.
-Enter a string value. Press Enter for the default ("").
-Choose a number from below, or type in your own value
- 1 / 1Fichier  
-   \ "fichier"  
- 2 / Alias for an existing remote  
-   \ "alias"  
- 3 / Amazon Drive  
-   \ "amazon cloud drive"  
- 4 / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, Tencent COS, etc)  
-   \ "s3"  
- 5 / Backblaze B2  
-   \ "b2"  
- 6 / Box  
-   \ "box"  
- 7 / Cache a remote  
-   \ "cache"  
- 8 / Citrix Sharefile  
-   \ "sharefile"  
- 9 / Dropbox  
-   \ "dropbox"  
-10 / Encrypt/Decrypt a remote  
-   \ "crypt"  
-11 / FTP Connection  
-   \ "ftp"  
-12 / Google Cloud Storage (this is not Google Drive)  
-   \ "google cloud storage"  
+Type of storage to configure.  
+Enter a string value. Press Enter for the default ("").  
+Choose a number from below, or type in your own value  
+ 
 13 / Google Drive  
    \ "drive"  
-14 / Google Photos  
-   \ "google photos"  
-15 / Hubic  
-   \ "hubic"  
-16 / In memory object storage system.  
-   \ "memory"  
-17 / Jottacloud  
-   \ "jottacloud"  
-18 / Koofr  
-   \ "koofr"  
-19 / Local Disk  
-   \ "local"  
-20 / Mail.ru Cloud  
-   \ "mailru"  
-21 / Mega  
-   \ "mega"  
-22 / Microsoft Azure Blob Storage  
-   \ "azureblob"  
-23 / Microsoft OneDrive  
-   \ "onedrive"  
-24 / OpenDrive  
-   \ "opendrive"  
-25 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)  
-   \ "swift"  
-26 / Pcloud  
-   \ "pcloud"  
-27 / Put.io  
-   \ "putio"  
-28 / QingCloud Object Storage  
-   \ "qingstor"  
-29 / SSH/SFTP Connection  
-   \ "sftp"  
-30 / Sugarsync  
-   \ "sugarsync"  
-31 / Tardigrade Decentralized Cloud Storage  
-   \ "tardigrade"  
-32 / Transparently chunk/split large files  
-   \ "chunker"  
-33 / Union merges the contents of several upstream fs  
-   \ "union"  
-34 / Webdav  
-   \ "webdav"  
-35 / Yandex Disk  
-   \ "yandex"  
-36 / http Connection  
-   \ "http"  
-37 / premiumize.me  
-   \ "premiumizeme"  
-38 / seafile  
-   \ "seafile"  
+
 Storage>  
    `
 
@@ -140,11 +68,9 @@ En `Use auto config? (y/n)`, escribimos n
 Log in and authorize rclone for access
 Enter verification code>`
 
-Como estoy instalando RClone remotamente desde un terminal SSH, copiamos y pegamos en nuestro navegador web la url larga que nos aparece en el terminal, en este caso es la siguiente url resaltada en negrillas.
+Como estoy instalando RClone remotamente desde un terminal SSH, copiamos y pegamos en nuestro navegador web la url larga que nos aparece en el terminal, en este caso es la siguiente url:
 
-`Please go to the following link: **https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=b1MNpS32JLYwxrH1CtonQhz34F356**
-Log in and authorize rclone for access
-Enter verification code>`
+`https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=202264815644.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&state=b1MNpS32JLYwxrH1CtonQhz34F356`
 
 
 Se nos abrirá la información donde nos indica **Elegir una cuenta para ir a rclone**, Elegimos o introducimos usuario y contraseña de la cuenta de Google Drive y después nos pedirá los permisos:
