@@ -96,21 +96,21 @@ if [ -d "$ServerName" ]; then
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
-  wget -O start.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/start.sh
+  wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
   chmod +x start.sh
   sed -i "s:dirname:$DirName:g" start.sh
   sed -i "s:servername:$ServerName:g" start.sh
 
   # Descargar stop.sh desde el repositorio
   echo "Tomando stop.sh del repositorio..."
-  wget -O stop.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/stop.sh
+  wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
   chmod +x stop.sh
   sed -i "s:dirname:$DirName:g" stop.sh
   sed -i "s:servername:$ServerName:g" stop.sh
 
   # Descargar restart.sh desde el repositorio
   echo "Tomando restart.sh del repositorio..."
-  wget -O restart.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/restart.sh
+  wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
   chmod +x restart.sh
   sed -i "s:dirname:$DirName:g" restart.sh
   sed -i "s:servername:$ServerName:g" restart.sh
@@ -221,21 +221,21 @@ unzip -o "downloads/$DownloadFile"
 
 # Descarga start.sh desde el repositorio
 echo "Tomando start.sh del repositorio..."
-wget -O start.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/start.sh
+wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
 chmod +x start.sh
 sed -i "s:dirname:$DirName:g" start.sh
 sed -i "s:servername:$ServerName:g" start.sh
 
 # Descargar stop.sh desde el repositorio
 echo "Tomando stop.sh del repositorio..."
-wget -O stop.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/stop.sh
+wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
 chmod +x stop.sh
 sed -i "s:dirname:$DirName:g" stop.sh
 sed -i "s:servername:$ServerName:g" stop.sh
 
 # DDescargar restart.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
-wget -O restart.sh https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/restart.sh
+wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
 chmod +x restart.sh
 sed -i "s:dirname:$DirName:g" restart.sh
 sed -i "s:servername:$ServerName:g" restart.sh
