@@ -1,10 +1,10 @@
 # Copias de Seguridad de los Mundos de Minecraft BE en una nube
 
-##En este ejemplo realizaremos la copia de seguridad automática en la nube de Google Drive o cuenta de Google
+### En este ejemplo realizaremos la copia de seguridad automática en la nube de Google Drive o cuenta de Google
 
 Para aquellos que tienen un servidor dedicado de Minecraft y no quieren utilizar los servicios de [FTP](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_archivos) o [SFTP](https://es.wikipedia.org/wiki/SSH_File_Transfer_Protocol) para guardar las copias de seguridad de sus mundos, este tutorial es el ideal ya que realizara la copia de seguridad automáticamente en la nube de Google Drive, Microsoft OneDrive, Amazon Drive, Dropbox, Mega y muchas más.
 
-1. Instalar RClone y vincularlo a una cuenta de Google Drive
+## 1. Instalar RClone y vincularlo a una cuenta de Google Drive
 
 Inicie sesión en su servidor Linux usando SSH con un ratón y teclado copie y pegue el siguiente comando en la terminal:
 
@@ -106,7 +106,7 @@ Salimos escribiendo `q`
 Ya tenemos configurada la Unidad con acceso a los archivos de la nube, el siguiente paso nos ayudara a montarla.
 
 
-2. Montar la nube de Google Drive
+## 2. Montar la nube de Google Drive
 
 * Vamos a montar la nube pública en nuestro servidor, como si fuera una unidad de disco duro. Para ello, necesitamos instalar Fuse si no lo tenemos instalado.
 
@@ -149,4 +149,4 @@ Reiniciamos nuestro servidor:
 Ya lo tenemos todo listo, solo vamos a nuestra carpeta drive y veremos los archivos que tengamos en `Mi Unidad` de Google Drive en ```/home/pi/drive```
 
 
-3. Configuracion del servidor
+## 3. Configuracion del servidor
