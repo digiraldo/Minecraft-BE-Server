@@ -1,6 +1,6 @@
 # Copias de Seguridad de los Mundos de Minecraft BE en una nube
 
-### En este ejemplo realizaremos la copia de seguridad automática en la nube de Google Drive o cuenta de Google
+## En este ejemplo realizaremos la copia de seguridad automática en la nube de Google Drive o cuenta de Google
 
 Para aquellos que tienen un servidor dedicado de Minecraft y no quieren utilizar los servicios de [FTP](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_archivos) o [SFTP](https://es.wikipedia.org/wiki/SSH_File_Transfer_Protocol) para guardar las copias de seguridad de sus mundos, este tutorial es el ideal ya que realizara la copia de seguridad automáticamente en la nube de Google Drive, Microsoft OneDrive, Amazon Drive, Dropbox, Mega y muchas más.
 
@@ -42,7 +42,7 @@ Para utilizar una cuenta en rclone, teclearemos en nuestra terminal:
 
 `Storage>`
 
-* Introducimos el número de la nube. En esta versión de RClone hay que introducir el número 13, correspondiente a Google Drive `Storage>13` y seguimos con el proceso.
+Introducimos el número de la nube. En esta versión de RClone hay que introducir el número 13, correspondiente a Google Drive `Storage>13` y seguimos con el proceso.
 
 Pregunta: `client_id> y client_secret>` , las dejamos por defecto en blanco pulsando Intro
 
@@ -97,9 +97,9 @@ Escribimos y luego enter y nos saldrá nuestra unidad que hemos montado configur
 
 `Current remotes:`
 
-`Name`           `Type`  
-`====`           `====`  
-`drive`          `drive`
+`Name`       `Type`
+`====`       `====`
+`drive`      `drive`
 
 Salimos escribiendo `q`
 
@@ -108,7 +108,7 @@ Ya tenemos configurada la Unidad con acceso a los archivos de la nube, el siguie
 
 ## 2. Montar la nube de Google Drive
 
-* Vamos a montar la nube pública en nuestro servidor, como si fuera una unidad de disco duro. Para ello, necesitamos instalar Fuse si no lo tenemos instalado.
+Vamos a montar la nube pública en nuestro servidor, como si fuera una unidad de disco duro. Para ello, necesitamos instalar Fuse si no lo tenemos instalado.
 
 ```sudo apt-get install fuse```
 
@@ -121,7 +121,7 @@ Y configuramo fuse escribiendo en el terminal:
 
 ```sudo nano /etc/fuse.conf```
 
-* Vamos a la línea final y quitamos los #
+Vamos a la línea final y quitamos los #
 
 `# Allow non-root users to specify the allow_other or allow_root mount options.`  
 `#user_allow_other`  
@@ -132,7 +132,7 @@ quedando de la siguiente manera con un espacio al comienzo de Allow
 `user_allow_other`   
 
 
-* Ahora vamos a configurar crontab para auto montar la nube al iniciar el sistema operativo escribiendo en el terminal:
+Ahora vamos a configurar crontab para auto montar la nube al iniciar el sistema operativo escribiendo en el terminal:
 
 ```crontab -e```
 
@@ -150,6 +150,7 @@ Ya lo tenemos todo listo, solo vamos a nuestra carpeta drive y veremos los archi
 
 
 ## 3. Configuracion del servidor
+
 
 Nos dirigimos a la carpeta del servidor Minecraft:
 
