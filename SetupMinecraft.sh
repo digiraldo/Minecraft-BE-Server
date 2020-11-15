@@ -233,7 +233,7 @@ chmod +x stop.sh
 sed -i "s:dirname:$DirName:g" stop.sh
 sed -i "s:servername:$ServerName:g" stop.sh
 
-# DDescargar restart.sh desde el repositorio
+# Descargar restart.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
 wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
 chmod +x restart.sh
