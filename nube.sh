@@ -14,8 +14,6 @@ sudo apt-get install fuse -y
 #sudo apt-get install curl -y
 
 
-
-
 # Obtener la ruta del directorio de home y el nombre de usuario
 # Verifique si el directorio de la unidad en la nube ya existe
 cd ~
