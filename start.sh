@@ -5,7 +5,7 @@
 
 # Compruebe si el servidor ya está iniciado
 if screen -list | grep -q "servername"; then
-    echo "¡El servidor ya está iniciado! para abrirlo escriba: screen -r (aquí nombre del servidor sin parentesis)"
+    echo "¡El servidor ya está iniciado! para abrirlo escriba: screen -r servername"
     exit 1
 fi
 
