@@ -83,7 +83,7 @@ read_with_prompt PortIPV6 "Puerto IPV6 del servidor" 19133
 if [ -d "$ServerName" ]; then
   echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio..."
 
-  # Get Home directory path and username
+  # Obtener la ruta del directorio de inicio y el nombre de usuario
   DirName=$(readlink -e ~)
   UserName=$(whoami)
   cd ~
