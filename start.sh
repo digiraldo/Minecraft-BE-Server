@@ -36,7 +36,7 @@ fi
 #Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
 echo "Creando copia de seguridad en la nube ..."
 
-rsync -avz backups/ $DirName/$CloudName
+rsync -avz backups/ dirname/cloudname
 
 # Recupere la última versión del servidor dedicado Minecraft Bedrock
 echo "Buscando la última versión del servidor Minecraft Bedrock ..."
