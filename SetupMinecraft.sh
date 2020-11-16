@@ -29,7 +29,7 @@ function read_with_prompt {
     if [[ -z ${!variable_name} ]] && [[ -n "$default" ]] ; then
       declare -g $variable_name=$default
     fi
-    echo -n "$prompt : ${!variable_name} -- aceptar? (y/n)"
+    echo -n "$prompt : ${!variable_name} -- accept (y/n)?"
     read answer < /dev/tty
     if [ "$answer" == "${answer#[Yy]}" ]; then
       unset $variable_name
@@ -40,7 +40,7 @@ function read_with_prompt {
 }
 
 # Instale las dependencias necesarias para ejecutar el servidor de Minecraft en segundo plano
-echo "Instalando screen, unzip, sudo, net-tools, wget.."
+echo "Instalando screen, unzip, sudo, net-tools, wget..."
 if [ ! -n "`which sudo`" ]; then
   apt-get update && apt-get install sudo -y
 fi
@@ -100,7 +100,7 @@ if [ -d "$ServerName" ]; then
   chmod +x start.sh
   sed -i "s:dirname:$DirName:g" start.sh
   sed -i "s:servername:$ServerName:g" start.sh
-  sed -i "s:cloudname:$CloudName:g" start.sh
+  #sed -i "s:cloudname:$CloudName:g" start.sh
 
   # Descargar stop.sh desde el repositorio
   echo "Tomando stop.sh del repositorio..."
@@ -108,7 +108,7 @@ if [ -d "$ServerName" ]; then
   chmod +x stop.sh
   sed -i "s:dirname:$DirName:g" stop.sh
   sed -i "s:servername:$ServerName:g" stop.sh
-  sed -i "s:cloudname:$CloudName:g" stop.sh
+  #sed -i "s:cloudname:$CloudName:g" stop.sh
 
   # Descargar restart.sh desde el repositorio
   echo "Tomando restart.sh del repositorio..."
@@ -116,18 +116,18 @@ if [ -d "$ServerName" ]; then
   chmod +x restart.sh
   sed -i "s:dirname:$DirName:g" restart.sh
   sed -i "s:servername:$ServerName:g" restart.sh
-  sed -i "s:cloudname:$CloudName:g" restarr.sh
-  
+  #sed -i "s:cloudname:$CloudName:g" restarr.sh
+
   # Descargar cloud.sh desde el repositorio
-  echo "Tomando restart.sh del repositorio..."
+  echo "Tomando cloud.sh del repositorio..."
   wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
   chmod +x cloud.sh
   sed -i "s:dirname:$DirName:g" cloud.sh
   sed -i "s:servername:$ServerName:g" cloud.sh
-  sed -i "s:cloudname:$CloudName:g" cloud.sh
+  #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
   # Actualizar el servicio del servidor de Minecraft
-  echo "Configurando el servicio $ServerName..."
+  echo "Configurando el servicio $ServerName ..."
   sudo wget -O /etc/systemd/system/$ServerName.service https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/minecraftbe.service
   sudo chmod +x /etc/systemd/system/$ServerName.service
   sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
@@ -136,7 +136,7 @@ if [ -d "$ServerName" ]; then
   sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
   sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
-  echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)"
+  echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
     sudo systemctl enable $ServerName.service
@@ -148,12 +148,12 @@ if [ -d "$ServerName" ]; then
       croncmd="$DirName/minecraftbe/$ServerName/restart.sh"
       cronjob="0 4 * * * $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
-      echo "Reinicio diario programado. Para cambiar la hora o eliminar el reinicio automático, escriba crontab -e"
+      echo "DReinicio diario programado. Para cambiar la hora o eliminar el reinicio automático, escriba crontab -e"
     fi
   fi
 
   # Configuración completada
-  echo "La configuración está completa. Iniciando el servidor Minecraft $ServerName..."
+  echo "La configuración está completa. Iniciando el servidor Minecraft $ServerName ..."
   sudo systemctl start $ServerName.service
 
   # Duerme durante 4 segundos para que el servidor tenga tiempo de comenzar
@@ -201,9 +201,9 @@ if [[ "$CPUArch" == *"aarch"* || "$CPUArch" == *"arm"* ]]; then
   fi
 
   if [ -n "`which qemu-x86_64-static`" ]; then
-    echo "QEMU-x86_64-static installed successfully"
+    echo "QEMU-x86_64-static instalada satisfactoriamente"
   else
-    echo "QEMU-x86_64-static did not install successfully -- please check the above output to see what went wrong."
+    echo "QEMU-x86_64-static no se instaló correctamente; verifique el resultado anterior para ver qué salió mal."
     exit 1
   fi
   
@@ -236,7 +236,7 @@ wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server
 chmod +x start.sh
 sed -i "s:dirname:$DirName:g" start.sh
 sed -i "s:servername:$ServerName:g" start.sh
-sed -i "s:cloudname:$CloudName:g" start.sh
+#sed -i "s:cloudname:$CloudName:g" start.sh
 
 # Descargar stop.sh desde el repositorio
 echo "Tomando stop.sh del repositorio..."
@@ -244,7 +244,7 @@ wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/
 chmod +x stop.sh
 sed -i "s:dirname:$DirName:g" stop.sh
 sed -i "s:servername:$ServerName:g" stop.sh
-sed -i "s:cloudname:$CloudName:g" stop.sh
+#sed -i "s:cloudname:$CloudName:g" stop.sh
 
 # Descargar restart.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
@@ -252,7 +252,7 @@ wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Serv
 chmod +x restart.sh
 sed -i "s:dirname:$DirName:g" restart.sh
 sed -i "s:servername:$ServerName:g" restart.sh
-sed -i "s:cloudname:$CloudName:g" restart.sh
+#sed -i "s:cloudname:$CloudName:g" restart.sh
 
 # Descargar cloud.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
@@ -260,10 +260,10 @@ wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server
 chmod +x cloud.sh
 sed -i "s:dirname:$DirName:g" cloud.sh
 sed -i "s:servername:$ServerName:g" cloud.sh
-sed -i "s:cloudname:$CloudName:g" cloud.sh
+#sed -i "s:cloudname:$CloudName:g" cloud.sh
 
 # Configuración del servicio
-echo "Configurando el servicio Minecraft $ServerName..."
+echo "Configurando el servicio Minecraft $ServerName ..."
 sudo wget -O /etc/systemd/system/$ServerName.service https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/minecraftbe.service
 sudo chmod +x /etc/systemd/system/$ServerName.service
 sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
@@ -273,7 +273,7 @@ sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
 sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
 
-echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)"
+echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
 read answer < /dev/tty
 if [ "$answer" != "${answer#[Yy]}" ]; then
   sudo systemctl enable $ServerName.service
@@ -281,8 +281,9 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
   # Reinicio automático a las 4 am
   TimeZone=$(cat /etc/timezone)
   CurrentTime=$(date)
-  echo "Su zona horaria está configurada actualmente en $TimeZone.  Hora actual del sistema: $CurrentTime"
-  echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente."
+  echo "Su zona horaria está configurada actualmente en $TimeZone.  CHora actual del sistema: $CurrentTime"
+  sleep 4s
+  echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente"
   echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
@@ -311,8 +312,8 @@ done
 if ! screen -list | grep -q "$ServerName"; then
   echo "El servidor de Minecraft no pudo iniciarse después de 20 segundos."
 else
-  echo "El servidor de Minecraft se ha iniciado.  Escribe -r nombredelservidor para ver el servidor en ejecución!"
+  echo "El servidor de Minecraft se ha iniciado.  Escribe -r $ServerName para ver el servidor en ejecución!"
 fi
 
 # Adjuntar a la pantalla
-sudo screen -r $ServerName
+screen -r $ServerName
