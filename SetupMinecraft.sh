@@ -122,7 +122,7 @@ if [ -d "$ServerName" ]; then
   echo "Tomando cloud.sh del repositorio..."
   wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
   chmod +x cloud.sh
-  sed -i "s:dirname:$DirName:g" cloud.sh
+  #sed -i "s:dirname:$DirName:g" cloud.sh
   sed -i "s:servername:$ServerName:g" cloud.sh
   #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
@@ -258,7 +258,7 @@ sed -i "s:servername:$ServerName:g" restart.sh
 echo "Tomando restart.sh del repositorio..."
 wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
 chmod +x cloud.sh
-sed -i "s:dirname:$DirName:g" cloud.sh
+#sed -i "s:dirname:$DirName:g" cloud.sh
 sed -i "s:servername:$ServerName:g" cloud.sh
 #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
