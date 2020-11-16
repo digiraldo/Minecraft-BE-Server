@@ -67,7 +67,11 @@ fi
 echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
 # Eliminar scrip start.sh para actualizar
-  rm start.sh stop.sh restart.sh cloud.sh
+cd ~
+cd minecraftbe
+cd servername
+
+sudo rm start.sh
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
@@ -113,8 +117,12 @@ sleep 3s
   
   sudo rclone config
   
-echo "Reiniciando Servidor..."
+echo "Montando fuse con RClone..."
+
+echo "rclone mount drive: $croncmd"
 
 sleep 4s
+
+sudo rclone mount drive: $croncmd
 
 #sudo reboot
