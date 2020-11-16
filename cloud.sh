@@ -73,9 +73,9 @@ echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraf
   echo "Tomando start.sh del repositorio..."
   wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
   chmod +x start.sh
-  sed -i "s:dirname:$DirName:g" start.sh
-  sed -i "s:servername:$ServerName:g" start.sh
-  sed -i "s:cloudname:$CloudName:g" start.sh
+  sudo sed -i "s:dirname:$DirName:g" start.sh
+  sudo sed -i "s:servername:$ServerName:g" start.sh
+  sudo sed -i "s:cloudname:$CloudName:g" start.sh
 
 # Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
