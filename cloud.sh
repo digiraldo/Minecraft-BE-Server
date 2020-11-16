@@ -1,6 +1,5 @@
-# Aqui instalamos RClone, tener presente cambio de carpetas
-
 # Instale las dependencias necesarias RClone y fuse para montar la nube
+
 cd ~
 echo "Instalando RClone, fuse.."
 if [ ! -n "`which sudo`" ]; then
@@ -11,34 +10,62 @@ sudo apt-get install curl -y
 sudo apt-get install sed -y
 sudo curl https://rclone.org/install.sh | sudo bash
 sudo apt-get install fuse -y
-#sudo apt-get install curl -y
 
+# Función para leer la entrada del usuario con un mensaje
+function read_with_prompt {
+  variable_name="$1"
+  prompt="$2"
+  default="${3-}"
+  unset $variable_name
+  while [[ ! -n ${!variable_name} ]]; do
+    read -p "$prompt: " $variable_name < /dev/tty
+    if [ ! -n "`which xargs`" ]; then
+      declare -g $variable_name=$(echo "${!variable_name}" | xargs)
+    fi
+    declare -g $variable_name=$(echo "${!variable_name}" | head -n1 | awk '{print $1;}')
+    if [[ -z ${!variable_name} ]] && [[ -n "$default" ]] ; then
+      declare -g $variable_name=$default
+    fi
+    echo -n "$prompt : ${!variable_name} -- aceptar? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" == "${answer#[Yy]}" ]; then
+      unset $variable_name
+    else
+      echo "$prompt: ${!variable_name}"
+    fi
+  done
+}
 
-# Obtener la ruta del directorio de home y el nombre de usuario
+# Configuración del nombre del servidor
+echo "Ingrese el nombre de la nube, ej: drive..."
+echo "Se utilizará como nombre de la carpeta donde se sincronizara la nube..."
+
+read_with_prompt CloudName "Nombre de la Nube"
+
 # Verifique si el directorio de la unidad en la nube ya existe
 cd ~
-if [ ! -d "drive" ]; then
-  mkdir drive
-  cd drive
+if [ ! -d "$CloudName" ]; then
+  mkdir $CloudName
+  cd $CloudName
 else
-  cd drive
-    echo "El directorio $DirName/drive es la unidad en la nube"
+  cd $CloudName
 fi
+echo "El directorio $DirName/$CloudName es la unidad en la Nube"
 
 # Verifique si el directorio drive/minecraft de la copia en la nube ya existe
 cd ~
-cd drive
+cd $CloudName
 if [ ! -d "minecraft" ]; then
   mkdir minecraft
   cd minecraft
 else
   cd minecraft
-    echo "El directorio $DirName/drive/minecraft es la copia en la nube final"
 fi
+echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
 # Montando la unidad al iniciar la maquina del servidor
 cd ~
-    echo -n "¿Montar la unidad $DirName/drive/minecraft al iniciar la maquina? (y/n)"
+    echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="$DirName/drive --allow-other &"
@@ -47,9 +74,7 @@ cd ~
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
 
-
 #@reboot rclone mount drive: /drive --allow-other &
-
 
 # Modificar archivo fuse.conf
 cd ~
@@ -60,4 +85,10 @@ echo "Archivo fuse configurado..."
 sudo sed -n "/Allow/p" /etc/fuse.conf
 sudo sed -n "/user_allow_other/p" /etc/fuse.conf
 
-sudo rclone mount drive: /drive --allow-other &
+# Iniciando Configuración Montaje de Unidad
+  cd ~
+  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/drive..."
+  sudo rclone config
+  
+echo "Reiniciando Servidor..."
+sudo reboot
