@@ -9,6 +9,12 @@ if screen -list | grep -q "servername"; then
     exit 1
 fi
 
+# Compruebe cloud
+if screen -list | grep -q "cloudname"; then
+    echo "Verificada la carpeta cloudname"
+    exit 1
+fi
+
 # Compruebe si las interfaces de red están activas
 NetworkChecks=0
 DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
@@ -29,16 +35,14 @@ cd dirname/minecraftbe/servername
 # Crear copia de seguridad
 if [ -d "worlds" ]; then
     echo "Copia de seguridad del servidor (en la carpeta minecraftbe/servername/backups)"
-    tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_World).tar.gz worlds
+    tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_Mundo).tar.gz worlds
 fi
 
 #Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
 #Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
 echo "Creando copia de seguridad en la nube ..."
 
-sudo rsync -avz backups/ dirname/cloudname/
-
-sudo rsync -avz backups/ $DirName/$CloudName/
+sudo rsync -avz backups/ /dirname/cloudname/
 
 # Recupere la última versión del servidor dedicado Minecraft Bedrock
 echo "Buscando la última versión del servidor Minecraft Bedrock ..."
@@ -64,6 +68,6 @@ else
     fi
 fi
 
-echo "Iniciando el servidor de Minecraft. Para ver el inicio, escriba en el terminal: screen -r (aquí nombre del servidor sin parentesis)"
+echo "Iniciando el servidor de Minecraft. Para ver el inicio, escriba en el terminal: screen -r servername"
 echo "Para minimizar la ventana y dejar que el servidor se ejecute en segundo plano, presione Ctrl+A luego Ctrl+D"
-screen -L -Logfile logs/$(date +%d.%m.%Y_%H.%M.%S).log -dmS servername /bin/bash -c "LD_LIBRARY_PATH=dirname/minecraftbe/servername dirname/minecraftbe/servername/bedrock_server"
+screen -L -Logfile logs/$(date +%Y.%m.%d.%H.%M.%S).log -dmS servername /bin/bash -c "LD_LIBRARY_PATH=dirname/minecraftbe/servername dirname/minecraftbe/servername/bedrock_server"
