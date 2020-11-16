@@ -75,8 +75,8 @@ echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraf
   chmod +x start.sh
   sudo sed -i "s:dirname:$DirName:g" start.sh
   sudo sed -i "s:servername:$ServerName:g" start.sh
-  sudo sed -i "s:cloudname:$CloudName:g" start.sh
-  #sudo sed -i "s/cloudname/$CloudName/g" start.sh
+  #sudo sed -i "s:cloudname:$CloudName:g" start.sh
+  sudo sed -i "s/cloudname/$CloudName/g" start.sh
 echo "Archivo configurado..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
 sleep 6s
