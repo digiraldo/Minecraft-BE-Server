@@ -311,8 +311,8 @@ done
 if ! screen -list | grep -q "$ServerName"; then
   echo "El servidor de Minecraft no pudo iniciarse después de 20 segundos."
 else
-  echo "El servidor de Minecraft se ha iniciado.  Escribe -r $ServerName para ver el servidor en ejecución!"
+  echo "El servidor de Minecraft se ha iniciado.  Escribe -r nombredelservidor para ver el servidor en ejecución!"
 fi
 
 # Adjuntar a la pantalla
-screen -r $ServerName
+sudo screen -r $ServerName
