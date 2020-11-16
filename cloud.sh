@@ -76,6 +76,10 @@ echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraf
   sudo sed -i "s:dirname:$DirName:g" start.sh
   sudo sed -i "s:servername:$ServerName:g" start.sh
   sudo sed -i "s:cloudname:$CloudName:g" start.sh
+  #sudo sed -i "s/cloudname/$CloudName/g" start.sh
+echo "Archivo configurado..."
+sudo sed -n "/sudo rsync -avz backups/p" start.sh
+sleep 6s
 
 # Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
@@ -103,7 +107,7 @@ sleep 3s
 
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/$CloudName ..."
+  echo "Realizar el inicio de seccion de la cuenta en la nube para el Montaje del servidor $DirName/$CloudName ..."
   
   sleep 4s
   
@@ -113,4 +117,4 @@ echo "Reiniciando Servidor..."
 
 sleep 4s
 
-sudo reboot
+#sudo reboot
