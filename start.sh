@@ -9,12 +9,6 @@ if screen -list | grep -q "servername"; then
     exit 1
 fi
 
-# Compruebe cloud
-if screen -list | grep -q "cloudname"; then
-    echo "Verificada la carpeta cloudname"
-    exit 1
-fi
-
 # Compruebe si las interfaces de red están activas
 NetworkChecks=0
 DefaultRoute=$(route -n | awk '$4 == "UG" {print $2}')
