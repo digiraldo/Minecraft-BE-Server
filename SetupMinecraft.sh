@@ -153,7 +153,7 @@ if [ -d "$ServerName" ]; then
   fi
 
   # Configuración completada
-  echo "La configuración está completa. Iniciando el servidor Minecraft $ ServerName..."
+  echo "La configuración está completa. Iniciando el servidor Minecraft $ServerName..."
   sudo systemctl start $ServerName.service
 
   # Duerme durante 4 segundos para que el servidor tenga tiempo de comenzar
