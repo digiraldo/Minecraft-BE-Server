@@ -148,7 +148,7 @@ if [ -d "$ServerName" ]; then
       croncmd="$DirName/minecraftbe/$ServerName/restart.sh"
       cronjob="0 4 * * * $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
-      echo "DReinicio diario programado. Para cambiar la hora o eliminar el reinicio automático, escriba crontab -e"
+      echo "Reinicio diario programado. Para cambiar la hora o eliminar el reinicio automático, escriba crontab -e"
     fi
   fi
 
