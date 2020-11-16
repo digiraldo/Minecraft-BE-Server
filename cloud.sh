@@ -4,7 +4,8 @@
 # Instale las dependencias necesarias RClone y fuse para montar la nube
 
 cd ~
-echo "Instalando RClone, fuse.."
+echo "Instalando RClone, fuse y otras dependencias..."
+sleep 4s
 if [ ! -n "`which sudo`" ]; then
   apt-get update && apt-get install sudo -y
 fi
@@ -88,10 +89,18 @@ echo "Archivo fuse configurado..."
 sudo sed -n "/Allow/p" /etc/fuse.conf
 sudo sed -n "/user_allow_other/p" /etc/fuse.conf
 
+sleep 3s
+
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/drive..."
+  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/$CloudName..."
+  
+  sleep 4s
+  
   sudo rclone config
   
 echo "Reiniciando Servidor..."
+
+sleep 4s
+
 sudo reboot
