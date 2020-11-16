@@ -281,8 +281,9 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
   # Reinicio automático a las 4 am
   TimeZone=$(cat /etc/timezone)
   CurrentTime=$(date)
-  echo "Su zona horaria está configurada actualmente en $TimeZone.  CHora actual del sistema: $CurrentTime"
-  sleep 4s
+  echo "Zona horaria actual del sistema: $TimeZone"
+  echo "Hora actual del sistema: $CurrentTime"
+  sleep 8s
   echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente"
   echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
   read answer < /dev/tty
