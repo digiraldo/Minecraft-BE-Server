@@ -100,6 +100,7 @@ if [ -d "$ServerName" ]; then
   chmod +x start.sh
   sed -i "s:dirname:$DirName:g" start.sh
   sed -i "s:servername:$ServerName:g" start.sh
+  sed -i "s:cloudname:$CloudName:g" start.sh
 
   # Descargar stop.sh desde el repositorio
   echo "Tomando stop.sh del repositorio..."
@@ -107,6 +108,7 @@ if [ -d "$ServerName" ]; then
   chmod +x stop.sh
   sed -i "s:dirname:$DirName:g" stop.sh
   sed -i "s:servername:$ServerName:g" stop.sh
+  sed -i "s:cloudname:$CloudName:g" stop.sh
 
   # Descargar restart.sh desde el repositorio
   echo "Tomando restart.sh del repositorio..."
@@ -114,6 +116,15 @@ if [ -d "$ServerName" ]; then
   chmod +x restart.sh
   sed -i "s:dirname:$DirName:g" restart.sh
   sed -i "s:servername:$ServerName:g" restart.sh
+  sed -i "s:cloudname:$CloudName:g" restarr.sh
+  
+  # Descargar cloud.sh desde el repositorio
+  echo "Tomando restart.sh del repositorio..."
+  wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
+  chmod +x cloud.sh
+  sed -i "s:dirname:$DirName:g" cloud.sh
+  sed -i "s:servername:$ServerName:g" cloud.sh
+  sed -i "s:cloudname:$CloudName:g" cloud.sh
 
   # Actualizar el servicio del servidor de Minecraft
   echo "Configurando el servicio $ServerName..."
@@ -225,6 +236,7 @@ wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server
 chmod +x start.sh
 sed -i "s:dirname:$DirName:g" start.sh
 sed -i "s:servername:$ServerName:g" start.sh
+sed -i "s:cloudname:$CloudName:g" start.sh
 
 # Descargar stop.sh desde el repositorio
 echo "Tomando stop.sh del repositorio..."
@@ -232,6 +244,7 @@ wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/
 chmod +x stop.sh
 sed -i "s:dirname:$DirName:g" stop.sh
 sed -i "s:servername:$ServerName:g" stop.sh
+sed -i "s:cloudname:$CloudName:g" stop.sh
 
 # Descargar restart.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
@@ -239,6 +252,15 @@ wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Serv
 chmod +x restart.sh
 sed -i "s:dirname:$DirName:g" restart.sh
 sed -i "s:servername:$ServerName:g" restart.sh
+sed -i "s:cloudname:$CloudName:g" restart.sh
+
+# Descargar cloud.sh desde el repositorio
+echo "Tomando restart.sh del repositorio..."
+wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
+chmod +x cloud.sh
+sed -i "s:dirname:$DirName:g" cloud.sh
+sed -i "s:servername:$ServerName:g" cloud.sh
+sed -i "s:cloudname:$CloudName:g" cloud.sh
 
 # Configuración del servicio
 echo "Configurando el servicio Minecraft $ServerName..."
