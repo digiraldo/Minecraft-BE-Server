@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Autor: Di Giraldo
 # Instale las dependencias necesarias RClone y fuse para montar la nube
@@ -67,7 +66,18 @@ else
 fi
 echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
-# Montando la unidad al iniciar la maquina del servidor
+# Eliminar scrip start.sh para actualizar
+  rm start.sh stop.sh restart.sh cloud.sh
+
+  # Descarga start.sh desde el repositorio
+  echo "Tomando start.sh del repositorio..."
+  wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
+  chmod +x start.sh
+  sed -i "s:dirname:$DirName:g" start.sh
+  sed -i "s:servername:$ServerName:g" start.sh
+  sed -i "s:cloudname:$CloudName:g" start.sh
+
+# Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
     echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
     read answer < /dev/tty
@@ -93,7 +103,7 @@ sleep 3s
 
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/$CloudName..."
+  echo "Iniciando el Inicio de seccion de la cuenta para el Montaje del servidor $DirName/$CloudName ..."
   
   sleep 4s
   
