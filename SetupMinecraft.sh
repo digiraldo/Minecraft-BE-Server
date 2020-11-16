@@ -92,7 +92,7 @@ if [ -d "$ServerName" ]; then
   echo "El directorio del servidor es: $DirName/minecraftbe/$ServerName"
 
   # REliminar scripts existentes
-  rm start.sh stop.sh restart.sh
+  rm start.sh stop.sh restart.sh cloud.sh
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
