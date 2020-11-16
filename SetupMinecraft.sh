@@ -53,16 +53,16 @@ sudo apt-get install openssl -y
 # Verifique si el directorio principal del servidor de Minecraft ya existe
 cd ~
 if [ ! -d "minecraftbe" ]; then
-  mkdir minecraftbe
+  sudo mkdir minecraftbe
   cd minecraftbe
 else
   cd minecraftbe
   if [ -f "bedrock_server" ]; then
     echo "Migración del antiguo servidor Bedrock a minecraftpe/old"
     cd ~
-    mv minecraftbe old
-    mkdir minecraftbe
-    mv old minecraftbe/old
+    sudo mv minecraftbe old
+    sudo mkdir minecraftbe
+    sudo mv old minecraftbe/old
     cd minecraftbe
     echo "Migración completa a minecraftbe/old"
   fi
@@ -92,37 +92,37 @@ if [ -d "$ServerName" ]; then
   echo "El directorio del servidor es: $DirName/minecraftbe/$ServerName"
 
   # Eliminar scripts existentes
-  rm start.sh stop.sh restart.sh cloud.sh
+  sudo rm start.sh stop.sh restart.sh cloud.sh
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
   wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
-  chmod +x start.sh
-  sed -i "s:dirname:$DirName:g" start.sh
-  sed -i "s:servername:$ServerName:g" start.sh
+  sudo chmod +x start.sh
+  sudo sed -i "s:dirname:$DirName:g" start.sh
+  sudo sed -i "s:servername:$ServerName:g" start.sh
   #sed -i "s:cloudname:$CloudName:g" start.sh
 
   # Descargar stop.sh desde el repositorio
   echo "Tomando stop.sh del repositorio..."
   wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
-  chmod +x stop.sh
-  sed -i "s:dirname:$DirName:g" stop.sh
-  sed -i "s:servername:$ServerName:g" stop.sh
+  sudo chmod +x stop.sh
+  sudo sed -i "s:dirname:$DirName:g" stop.sh
+  sudo sed -i "s:servername:$ServerName:g" stop.sh
   #sed -i "s:cloudname:$CloudName:g" stop.sh
 
   # Descargar restart.sh desde el repositorio
   echo "Tomando restart.sh del repositorio..."
   wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
-  chmod +x restart.sh
-  sed -i "s:dirname:$DirName:g" restart.sh
-  sed -i "s:servername:$ServerName:g" restart.sh
+  sudo chmod +x restart.sh
+  sudo sed -i "s:dirname:$DirName:g" restart.sh
+  sudo sed -i "s:servername:$ServerName:g" restart.sh
   #sed -i "s:cloudname:$CloudName:g" restarr.sh
 
   # Descargar cloud.sh desde el repositorio
   echo "Tomando cloud.sh del repositorio..."
   wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
-  chmod +x cloud.sh
-  #sed -i "s:dirname:$DirName:g" cloud.sh
+  sudo chmod +x cloud.sh
+  sudo sed -i "s:dirname:$DirName:g" cloud.sh
   sudo sed -i "s:servername:$ServerName:g" cloud.sh
   #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
@@ -133,8 +133,8 @@ if [ -d "$ServerName" ]; then
   sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
   sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
   sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
-  sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
-  sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
+  sudo sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
+  sudo sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
   echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
   read answer < /dev/tty
@@ -168,11 +168,11 @@ fi
 echo "Creando directorio del servidor de Minecraft (~/minecraftbe/$ServerName)..."
 cd ~
 cd minecraftbe
-mkdir $ServerName
+sudo mkdir $ServerName
 cd $ServerName
-mkdir downloads
-mkdir backups
-mkdir logs
+sudo mkdir downloads
+sudo mkdir backups
+sudo mkdir logs
 
 # Verifique la arquitectura de la CPU para ver si necesitamos hacer algo especial para la plataforma en la que se ejecuta el servidor
 echo "Obteniendo la arquitectura de la CPU del sistema..."
@@ -209,7 +209,7 @@ if [[ "$CPUArch" == *"aarch"* || "$CPUArch" == *"arm"* ]]; then
   
   # Recuperar depende.zip del repositorio de GitHub
   wget -O depends.zip https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/depends.zip
-  unzip depends.zip
+  sudo unzip depends.zip
   sudo mkdir /lib64
   # Cree un enlace flexible ld-linux-x86-64.so.2 mapeado a ld-2.28.so
   sudo ln -s ~/minecraftbe/$ServerName/ld-2.28.so /lib64/ld-linux-x86-64.so.2
@@ -228,38 +228,38 @@ echo "Descargando la última versión del servidor Minecraft Bedrock..."
 UserName=$(whoami)
 DirName=$(readlink -e ~)
 wget -O "downloads/$DownloadFile" "$DownloadURL"
-unzip -o "downloads/$DownloadFile"
+sudo unzip -o "downloads/$DownloadFile"
 
 # Descarga start.sh desde el repositorio
 echo "Tomando start.sh del repositorio..."
 wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
-chmod +x start.sh
-sed -i "s:dirname:$DirName:g" start.sh
-sed -i "s:servername:$ServerName:g" start.sh
+sudo chmod +x start.sh
+sudo sed -i "s:dirname:$DirName:g" start.sh
+sudo sed -i "s:servername:$ServerName:g" start.sh
 #sed -i "s:cloudname:$CloudName:g" start.sh
 
 # Descargar stop.sh desde el repositorio
 echo "Tomando stop.sh del repositorio..."
 wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
-chmod +x stop.sh
-sed -i "s:dirname:$DirName:g" stop.sh
-sed -i "s:servername:$ServerName:g" stop.sh
+sudo chmod +x stop.sh
+sudo sed -i "s:dirname:$DirName:g" stop.sh
+sudo sed -i "s:servername:$ServerName:g" stop.sh
 #sed -i "s:cloudname:$CloudName:g" stop.sh
 
 # Descargar restart.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
 wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
-chmod +x restart.sh
-sed -i "s:dirname:$DirName:g" restart.sh
-sed -i "s:servername:$ServerName:g" restart.sh
+sudo chmod +x restart.sh
+sudo sed -i "s:dirname:$DirName:g" restart.sh
+sudo sed -i "s:servername:$ServerName:g" restart.sh
 #sed -i "s:cloudname:$CloudName:g" restart.sh
 
 # Descargar cloud.sh desde el repositorio
 echo "Tomando restart.sh del repositorio..."
 wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
-chmod +x cloud.sh
-#sed -i "s:dirname:$DirName:g" cloud.sh
-sudo sed -i "s/servername/$ServerName/g" cloud.sh
+sudo chmod +x cloud.sh
+sudo sed -i "s:dirname:$DirName:g" cloud.sh
+sudo sed -i "s:servername:$ServerName:g" cloud.sh
 #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
 # Configuración del servicio
@@ -269,8 +269,8 @@ sudo chmod +x /etc/systemd/system/$ServerName.service
 sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
-sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
-sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
+sudo sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
+sudo sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
 
 echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
@@ -281,9 +281,8 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
   # Reinicio automático a las 4 am
   TimeZone=$(cat /etc/timezone)
   CurrentTime=$(date)
-  echo "Zona horaria actual del sistema: $TimeZone"
-  echo "Hora actual del sistema: $CurrentTime"
-  sleep 8s
+  echo "Su zona horaria está configurada actualmente en $TimeZone.  CHora actual del sistema: $CurrentTime"
+  sleep 4s
   echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente"
   echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
   read answer < /dev/tty
