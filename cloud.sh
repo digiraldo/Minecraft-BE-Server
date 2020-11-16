@@ -1,3 +1,6 @@
+
+#!/bin/bash
+# Autor: Di Giraldo
 # Instale las dependencias necesarias RClone y fuse para montar la nube
 
 cd ~
