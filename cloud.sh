@@ -116,7 +116,7 @@ sleep 3s
   
 echo "Montando fuse con RClone..."
 
-echo "rclone mount drive: $croncmd"
+echo "rclone mount $CloudName: /$DirName/$CloudName"
 
 sleep 4s
 
