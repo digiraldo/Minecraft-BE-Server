@@ -78,8 +78,8 @@ sudo sed -i "s/cloudname/$CloudName/g" start.sh
 
 echo "Archivos configurados..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
-sudo sed -n "s:cloudname:/p" SetupMinecraft.sh
-sleep 8s
+
+sleep 5s
 
 # Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
