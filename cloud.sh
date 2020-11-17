@@ -73,8 +73,6 @@ cd ~
 cd minecraftbe
 cd servername
 
-sudo rm start.sh
-
 # Modificar start.sh y SetupMinecraft.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
 
