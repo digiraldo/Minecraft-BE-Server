@@ -33,20 +33,20 @@ done
 # Detener el servidor
 while [ $CountdownTime -gt 0 ]; do
   if [ $CountdownTime -eq 1 ]; then
-    screen -Rd servername -X stuff "say Stopping server in 60 seconds...$(printf '\r')"
+    screen -Rd servername -X stuff "say Deteniendo el Servidor en 60 segundos...$(printf '\r')"
     sleep 30;
-    screen -Rd servername -X stuff "say Stopping server in 30 seconds...$(printf '\r')"
+    screen -Rd servername -X stuff "say Deteniendo el Servidor en 30 segundos...$(printf '\r')"
     sleep 20;
-    screen -Rd servername -X stuff "say Stopping server in 10 seconds...$(printf '\r')"
+    screen -Rd servername -X stuff "say Deteniendo el Servidor en 10 segundos...$(printf '\r')"
     sleep 10;
   else
-    screen -Rd servername -X stuff "say Stopping server in $CountdownTime minutes...$(printf '\r')"
+    screen -Rd servername -X stuff "say Deteniendo el Servidor en $CountdownTime minutes...$(printf '\r')"
     sleep 60;
   fi
   echo "Esperando $ CountdownTime más minutos ..."
 done
 echo "Deteneniendo el servidor de Minecraft ..."
-screen -Rd servername -X stuff "say Stopping server (stop.sh called)...$(printf '\r')"
+screen -Rd servername -X stuff "say Servidor detenido o cerrado (stop.sh called)...$(printf '\r')"
 screen -Rd servername -X stuff "stop$(printf '\r')"
 
 # Espere hasta 20 segundos para que se cierre el servidor
