@@ -86,7 +86,7 @@ cd ~
     echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
-      croncmd="$DirName/drive --allow-other &"
+      croncmd="$DirName/$CloudName --allow-other &"
       cronjob="@reboot rclone mount drive: $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
