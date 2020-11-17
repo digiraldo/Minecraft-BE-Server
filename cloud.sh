@@ -87,7 +87,8 @@ cd ~
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="$DirName/$CloudName --allow-other &"
-      cronjob="@reboot rclone mount drive: $croncmd"
+      # El nombre de la unidad en RClone debe ser igual al al carpeta---------------------------------------------
+      cronjob="@reboot rclone mount $CloudName: $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
