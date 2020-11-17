@@ -73,17 +73,21 @@ cd servername
 
 sudo rm start.sh
 
-  # Descarga start.sh desde el repositorio
+    # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
   wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
   chmod +x start.sh
   sudo sed -i "s:dirname:$DirName:g" start.sh
   sudo sed -i "s:servername:$ServerName:g" start.sh
   #sudo sed -i "s:cloudname:$CloudName:g" start.sh
+  sudo sed -i "s/cloud/$CloudName/g" SetupMinecraft.sh
+  # Modificar archivo SetupMinecraft.sh
   sudo sed -i "s/cloudname/$CloudName/g" start.sh
-echo "Archivo configurado..."
+
+echo "Archivos configurados..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
-sleep 6s
+sudo sed -n "s:cloudname:/p" SetupMinecraft.sh
+sleep 8s
 
 # Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
