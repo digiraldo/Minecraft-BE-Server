@@ -14,7 +14,7 @@ sudo apt-get install sed -y
 sudo curl https://rclone.org/install.sh | sudo bash
 sudo apt-get install fuse -y
 
-servername="$ServerName"
+#servernamec="$ServerName"
 
 # Función para leer la entrada del usuario con un mensaje
 function read_with_prompt {
@@ -75,16 +75,8 @@ cd servername
 
 sudo rm start.sh
 
-    # Descarga start.sh desde el repositorio
-  echo "Tomando start.sh del repositorio..."
-  wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
-  chmod +x start.sh
-  sudo sed -i "s:dirname:$DirName:g" start.sh
-  sudo sed -i "s:servername:$ServerName:g" start.sh
-  #sudo sed -i "s:cloudname:$CloudName:g" start.sh
-  sudo sed -i "s/cloud/$CloudName/g" SetupMinecraft.sh
-  # Modificar archivo SetupMinecraft.sh
-  sudo sed -i "s/cloudname/$CloudName/g" start.sh
+# Modificar start.sh y SetupMinecraft.sh
+sudo sed -i "s/cloudname/$CloudName/g" start.sh
 
 echo "Archivos configurados..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
