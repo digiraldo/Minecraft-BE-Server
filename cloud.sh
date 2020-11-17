@@ -14,6 +14,8 @@ sudo apt-get install sed -y
 sudo curl https://rclone.org/install.sh | sudo bash
 sudo apt-get install fuse -y
 
+servername="$ServerName"
+
 # Función para leer la entrada del usuario con un mensaje
 function read_with_prompt {
   variable_name="$1"
