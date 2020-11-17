@@ -98,10 +98,10 @@ cd ~
 # Modificar archivo fuse.conf
 cd ~
 sudo chmod +x /etc/fuse.conf
-sudo sed -i "s/# Allow non-root users to specify the allow_other or allow_root mount options./ Allow non-root users to specify the allow_other or allow_root mount options./g" /etc/fuse.conf
+#sudo sed -i "s/# Allow non-root users to specify the allow_other or allow_root mount options./ Allow non-root users to specify the allow_other or allow_root mount options./g" /etc/fuse.conf
 sudo sed -i "s/#user_allow_other/user_allow_other/g" /etc/fuse.conf
 echo "Archivo fuse configurado..."
-sudo sed -n "/Allow/p" /etc/fuse.conf
+sudo sed -n "/# Allow/p" /etc/fuse.conf
 sudo sed -n "/user_allow_other/p" /etc/fuse.conf
 
 sleep 3s
