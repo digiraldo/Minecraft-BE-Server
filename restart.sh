@@ -12,9 +12,9 @@ fi
 echo "Envío de notificaciones de reinicio al servidor..."
 
 # Iniciar aviso de cuenta atrás en el servidor
-screen -Rd servername -X stuff "El Servidor se reinicia en 30 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say El Servidor se reinicia en 30 Segundos, GUARDA TU PARTIDA! $(printf '\r')"
 sleep 23s
-screen -Rd servername -X stuff "El Servidor se reinicia en 7 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say El Servidor se reinicia en 7 Segundos! $(printf '\r')"
 sleep 1s
 screen -Rd servername -X stuff "say El Servidor se reinicia en 6 Segundos! $(printf '\r')"
 sleep 1s
@@ -28,7 +28,7 @@ screen -Rd servername -X stuff "say El Servidor se reinicia en 2 Segundos! $(pri
 sleep 1s
 screen -Rd servername -X stuff "say El Servidor se reinicia en 1 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "Reiniciando servidor...$(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando servidor...$(printf '\r')"
 screen -Rd servername -X stuff "stop$(printf '\r')"
 
 echo "Cerrando servidor..."
