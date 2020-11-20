@@ -106,10 +106,10 @@ sleep 3s
   sudo rclone config
 
 # Confirme el nombre de la unidad remota de rclone
-
+echo "========================================================================="
 echo "Confirme el nombre de la unidad remota que escribio en RClone"
-
 read_with_prompt RclonName "nombre"
+echo "========================================================================="
 
 # Montando la unidad al iniciar la maquina del servidor en crontab -e
 cd ~
