@@ -42,8 +42,11 @@ function read_with_prompt {
 }
 
 # Configuración del nombre del servidor
-echo "Ingrese el nombre de la nube, ej: drive..."
+echo "========================================================================="
+echo "========================================================================="
+echo "Ingrese el nombre de la nube, ejemplo: drive, onedrive, mi_unidad..."
 echo "Se utilizará como nombre de la carpeta donde se sincronizara la nube..."
+echo "========================================================================="
 
 read_with_prompt CloudName "Nombre de la Nube"
 
@@ -68,13 +71,15 @@ else
 fi
 echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
-# Eliminar scrip start.sh para actualizar
+# ingresar a la carpeta del servidor minecraft
 cd ~
 cd minecraftbe
 cd servername
 
 # Modificar start.sh y SetupMinecraft.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
+#sudo sed -i "s/servername/$ServerName/g" start.sh
+
 
 echo "Archivos configurados..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
@@ -94,7 +99,7 @@ sleep 3s
 
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  echo "Realizar el inicio de seccion de la cuenta en la nube para el Montaje del servidor $DirName/$CloudName ..."
+  echo "Realizar inicio de seccion en la cuenta de la nube para la carpeta $DirName/$CloudName ..."
 
   sleep 4s
 
@@ -127,5 +132,23 @@ echo "rclone mount $RclonName: $DirName/$CloudName"
 sleep 4s
 
 sudo rclone mount $RclonName: $DirName/$CloudName --allow-other
+
+# Verificar archivos sincronizados
+cd ~
+cd $CloudName
+
+echo "Si no visualiza los archivos en $DirName/$CloudName, favor reiniciar máquina"
+
+sleep 5s
+
+# Reiniciar la maquina?
+cd ~
+    echo -n "¿Reiniciar la máquina o servidor? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      sudo reboot
+      echo "Reiniciando Máquina o Servidor..."
+    fi
+
 
 #sudo reboot
