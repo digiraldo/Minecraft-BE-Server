@@ -136,7 +136,7 @@ sudo rclone mount $RclonName: $DirName/$CloudName --allow-other
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
-
+ls -l
 echo "Si no visualiza los archivos en $DirName/$CloudName, favor reiniciar máquina"
 
 sleep 5s
