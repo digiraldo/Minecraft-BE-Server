@@ -122,7 +122,7 @@ cd ~
 
 echo "Montando fuse con RClone..."
 
-echo "rclone mount $RclonName: /$DirName/$CloudName"
+echo "rclone mount $RclonName: $DirName/$CloudName"
 
 sleep 4s
 
