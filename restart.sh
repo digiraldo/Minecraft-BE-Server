@@ -14,21 +14,22 @@ echo "Envío de notificaciones de reinicio al servidor..."
 # Iniciar aviso de cuenta atrás en el servidor
 screen -Rd servername -X stuff "say El Servidor se reinicia en 30 Segundos, GUARDA TU PARTIDA! $(printf '\r')"
 sleep 23s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 7 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 7 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 6 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 6 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 5 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 5 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 4 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 4 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 3 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 3 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 2 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 2 Segundos! $(printf '\r')"
 sleep 1s
-screen -Rd servername -X stuff "say El Servidor se reinicia en 1 Segundos! $(printf '\r')"
+screen -Rd servername -X stuff "say Reiniciando en 1 Segundos! $(printf '\r')"
 sleep 1s
 screen -Rd servername -X stuff "say Reiniciando servidor...$(printf '\r')"
+sleep 1s
 screen -Rd servername -X stuff "stop$(printf '\r')"
 
 echo "Cerrando servidor..."
