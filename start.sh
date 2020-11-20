@@ -42,7 +42,7 @@ sudo rsync -avz backups/ dirname/cloudname/minecraft
 echo "Buscando la última versión del servidor Minecraft Bedrock ..."
 
 # Pruebe primero la conectividad a Internet
-wget --spider --quiet https://minecraft.net/en-us/download/server/bedrock/
+wget --quiet http://www.minecraft.net/ -O /dev/null
 if [ "$?" != 0 ]; then
     echo "No se puede conectar al sitio web para actualizar (es posible que la conexión a Internet no funcione). Omitiendo actualización ..."
 else
