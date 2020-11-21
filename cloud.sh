@@ -139,7 +139,7 @@ echo "========================================================================="
 echo "========================================================================="
 ls -l
 echo "========================================================================="
-echo "Si no visualiza los archivos en dirname/$CloudName, favor reiniciar máquina"
+#echo "Si no visualiza los archivos en dirname/$CloudName, favor reiniciar máquina"
 
 sleep 5s
 
