@@ -116,28 +116,30 @@ cd ~
     echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
-      croncmd="$DirName/$CloudName --allow-other &"
+      croncmd="dirname/$CloudName"
       # El nombre de la unidad en RClone debe ser igual $RclonName 
-      cronjob="@reboot rclone mount $RclonName: $croncmd"
+      cronjob="@reboot rclone mount --allow-non-empty $RclonName: $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
 
-#@reboot rclone mount drive: /drive --allow-other &
-
+#@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
+echo "========================================================================="
 echo "Montando fuse con RClone..."
-
-echo "rclone mount $RclonName: $DirName/$CloudName"
-
+echo "rclone mount --allow-non-empty $RclonName: $croncmd"
+echo "========================================================================="
 sleep 4s
 
-sudo rclone mount $RclonName: $DirName/$CloudName --allow-other
+sudo rclone mount --allow-non-empty $RclonName: $croncmd
 
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
+echo "========================================================================="
+echo "========================================================================="
 ls -l
-echo "Si no visualiza los archivos en $DirName/$CloudName, favor reiniciar máquina"
+echo "========================================================================="
+echo "Si no visualiza los archivos en dirname/$CloudName, favor reiniciar máquina"
 
 sleep 5s
 
