@@ -130,7 +130,7 @@ echo "rclone mount --allow-non-empty $RclonName: $croncmd"
 echo "========================================================================="
 sleep 4s
 
-sudo rclone mount --allow-non-empty $RclonName: $croncmd
+#sudo rclone mount --allow-non-empty $RclonName: $croncmd
 
 # Verificar archivos sincronizados
 cd ~
@@ -152,5 +152,10 @@ cd ~
       echo "Reiniciando Máquina o Servidor..."
     fi
 
+echo "========================================================================="
+echo "por favor digite el siguiente codigo para iniciar la nube"
+echo "sudo rclone mount --allow-non-empty $RclonName: $croncmd"
+echo "========================================================================="
+sleep 4s
 
 #sudo reboot
