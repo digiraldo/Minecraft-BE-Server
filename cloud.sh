@@ -41,11 +41,24 @@ function read_with_prompt {
   done
 }
 
+
+# Configuración del nombre minecraft en la cuenta de la nube
+echo "========================================================================="
+echo "========================================================================="
+echo "Antes de seguir debe iniciar seccion en drive, onedrive o la nube que valla a utilizar"
+echo "Y deberá crear la carpeta donde realizará las copias de seguridad"
+echo "========================================================================="
+echo "_________________________________________________________________________
+echo "-------------------------------------------------------------------------"
+echo "Escriba aquí el mismo nombre de la carpeta que creaste en tu cuenta de la nube"
+echo "========================================================================="
+read_with_prompt FolderName "Nombre de Carpeta"
+
 # Configuración del nombre del servidor
 echo "========================================================================="
 echo "========================================================================="
-echo "Ingrese el nombre de la nube, ejemplo: drive, onedrive, mi_unidad..."
-echo "Se utilizará como nombre de la carpeta donde se sincronizara la nube..."
+echo "Ingrese el nombre de la nube donde creó la carpeta, ejemplo: drive, onedrive, mi_unidad..."
+echo "Se utilizará como nombre de la unidad donde se sincronizara la nube..."
 echo "========================================================================="
 
 read_with_prompt CloudName "Nombre de la Nube"
@@ -78,12 +91,15 @@ cd servername
 
 # Modificar start.sh y SetupMinecraft.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
+sudo sed -i "s/foldername/$FolderName/g" start.sh
 #sudo sed -i "s/servername/$ServerName/g" start.sh
 
+echo "========================================================================="
 
 echo "Archivos configurados..."
 sudo sed -n "/sudo rsync -avz backups/p" start.sh
 
+echo "========================================================================="
 sleep 5s
 
 # Modificar archivo fuse.conf
@@ -118,7 +134,7 @@ cd ~
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="dirname/$CloudName"
       # El nombre de la unidad en RClone debe ser igual $RclonName 
-      cronjob="@reboot rclone mount --allow-non-empty $RclonName: $croncmd"
+      cronjob="@reboot rclone mount $RclonName: $croncmd --allow-other &"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
@@ -126,12 +142,14 @@ cd ~
 #@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
 echo "========================================================================="
 echo "Montando fuse con RClone..."
-echo "rclone mount --allow-non-empty $RclonName: $croncmd"
+echo "rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
 sleep 4s
 
-#sudo rclone mount --allow-non-empty $RclonName: $croncmd
-
+sudo rclone mount $RclonName: $croncmd --allow-other &
+echo "Montando RClone con Fuse..."
+echo "========================================================================="
+sleep 3s
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
@@ -153,8 +171,8 @@ cd ~
     fi
 
 echo "========================================================================="
-echo "por favor digite el siguiente codigo para iniciar la nube"
-echo "sudo rclone mount --allow-non-empty $RclonName: $croncmd"
+echo "El siguiente codigo es para montar el disco de la nube"
+echo "sudo rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
 sleep 4s
 
