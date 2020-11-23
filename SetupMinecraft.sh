@@ -94,7 +94,7 @@ echo "========================================================================="
   echo "El directorio del servidor es: $DirName/minecraftbe/$ServerName"
 echo "========================================================================="
   # Eliminar scripts existentes
-  rm start.sh stop.sh restart.sh cloud.sh
+  rm start.sh stop.sh restart.sh cloud.sh back.sh
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
@@ -102,32 +102,35 @@ echo "========================================================================="
   chmod +x start.sh
   sed -i "s:dirname:$DirName:g" start.sh
   sed -i "s:servername:$ServerName:g" start.sh
-  #sed -i "s:cloudname:$CloudName:g" start.sh
-
+  
   # Descargar stop.sh desde el repositorio
   echo "Tomando stop.sh del repositorio..."
   wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
   chmod +x stop.sh
   sed -i "s:dirname:$DirName:g" stop.sh
   sed -i "s:servername:$ServerName:g" stop.sh
-  #sed -i "s:cloudname:$CloudName:g" stop.sh
-
+  
   # Descargar restart.sh desde el repositorio
   echo "Tomando restart.sh del repositorio..."
   wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
   chmod +x restart.sh
   sed -i "s:dirname:$DirName:g" restart.sh
   sed -i "s:servername:$ServerName:g" restart.sh
-  #sed -i "s:cloudname:$CloudName:g" restarr.sh
-
+  
   # Descargar cloud.sh desde el repositorio
   echo "Tomando cloud.sh del repositorio..."
   wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
   chmod +x cloud.sh
   sudo sed -i "s:dirname:$DirName:g" cloud.sh
   sudo sed -i "s:servername:$ServerName:g" cloud.sh
-  #sed -i "s:cloudname:$CloudName:g" cloud.sh
-
+  
+  # Descargar back.sh desde el repositorio
+  echo "Tomando back.sh del repositorio..."
+  wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
+  chmod +x back.sh
+  sudo sed -i "s:dirname:$DirName:g" back.sh
+  sudo sed -i "s:servername:$ServerName:g" back.sh
+  
   # Actualizar el servicio del servidor de Minecraft
   echo "Configurando el servicio $ServerName ..."
   sudo wget -O /etc/systemd/system/$ServerName.service https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/minecraftbe.service
@@ -251,7 +254,6 @@ wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/
 chmod +x stop.sh
 sed -i "s:dirname:$DirName:g" stop.sh
 sed -i "s:servername:$ServerName:g" stop.sh
-#sed -i "s:cloudname:$CloudName:g" stop.sh
 
 # Descargar restart.sh desde el repositorio
 echo "========================================================================="
@@ -260,7 +262,6 @@ wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Serv
 chmod +x restart.sh
 sed -i "s:dirname:$DirName:g" restart.sh
 sed -i "s:servername:$ServerName:g" restart.sh
-#sed -i "s:cloudname:$CloudName:g" restart.sh
 
 # Descargar cloud.sh desde el repositorio
 echo "========================================================================="
@@ -269,7 +270,14 @@ wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server
 chmod +x cloud.sh
 sudo sed -i "s:dirname:$DirName:g" cloud.sh
 sudo sed -i "s/servername/$ServerName/g" cloud.sh
-#sed -i "s:cloudname:$CloudName:g" cloud.sh
+
+# Descargar back.sh desde el repositorio
+echo "========================================================================="
+  echo "Tomando back.sh del repositorio..."
+  wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
+  chmod +x back.sh
+  sudo sed -i "s:dirname:$DirName:g" back.sh
+  sudo sed -i "s:servername:$ServerName:g" back.sh
 
 # Configuración del servicio
 echo "========================================================================="
