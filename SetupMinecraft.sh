@@ -69,9 +69,10 @@ else
 fi
 
 # Configuración del nombre del servidor
+echo "========================================================================="
 echo "Ingrese un nombre corto para el servidor nuevo o existente..."
 echo "Se utilizará como nombre de la carpeta y el nombre del servicio..."
-
+echo "========================================================================="
 read_with_prompt ServerName "Nombre de Servidor"
 
 echo "Introduzca el puerto IPV4 del servidor (predeterminado 19132): "
@@ -80,9 +81,10 @@ read_with_prompt PortIPV4 "Puerto IPV4 del servidor" 19132
 echo "Introduzca el puerto IPV6 del servidor (predeterminado 19133): "
 read_with_prompt PortIPV6 "Puerto IPV6 del servidor" 19133
 
+echo "========================================================================="
 if [ -d "$ServerName" ]; then
   echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio..."
-
+echo "========================================================================="
   # Obtener la ruta del directorio de inicio y el nombre de usuario
   DirName=$(readlink -e ~)
   UserName=$(whoami)
@@ -90,7 +92,7 @@ if [ -d "$ServerName" ]; then
   cd minecraftbe
   cd $ServerName
   echo "El directorio del servidor es: $DirName/minecraftbe/$ServerName"
-
+echo "========================================================================="
   # Eliminar scripts existentes
   rm start.sh stop.sh restart.sh cloud.sh
 
@@ -142,6 +144,7 @@ if [ -d "$ServerName" ]; then
     sudo systemctl enable $ServerName.service
 
     # Reinicio automático configurado a las 4 am
+    echo "========================================================================="
     echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
@@ -153,6 +156,7 @@ if [ -d "$ServerName" ]; then
   fi
 
   # Configuración completada
+  echo "========================================================================="
   echo "La configuración está completa. Iniciando el servidor Minecraft $ServerName ..."
   sudo systemctl start $ServerName.service
 
@@ -224,6 +228,7 @@ echo "$DownloadURL"
 echo "$DownloadFile"
 
 # Descargue la última versión del servidor dedicado Minecraft Bedrock
+echo "========================================================================="
 echo "Descargando la última versión del servidor Minecraft Bedrock..."
 UserName=$(whoami)
 DirName=$(readlink -e ~)
@@ -231,6 +236,7 @@ wget -O "downloads/$DownloadFile" "$DownloadURL"
 unzip -o "downloads/$DownloadFile"
 
 # Descarga start.sh desde el repositorio
+echo "========================================================================="
 echo "Tomando start.sh del repositorio..."
 wget -O start.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/start.sh
 chmod +x start.sh
@@ -239,6 +245,7 @@ sed -i "s:servername:$ServerName:g" start.sh
 #sed -i "s:cloudname:$CloudName:g" start.sh
 
 # Descargar stop.sh desde el repositorio
+echo "========================================================================="
 echo "Tomando stop.sh del repositorio..."
 wget -O stop.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/stop.sh
 chmod +x stop.sh
@@ -247,6 +254,7 @@ sed -i "s:servername:$ServerName:g" stop.sh
 #sed -i "s:cloudname:$CloudName:g" stop.sh
 
 # Descargar restart.sh desde el repositorio
+echo "========================================================================="
 echo "Tomando restart.sh del repositorio..."
 wget -O restart.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/restart.sh
 chmod +x restart.sh
@@ -255,6 +263,7 @@ sed -i "s:servername:$ServerName:g" restart.sh
 #sed -i "s:cloudname:$CloudName:g" restart.sh
 
 # Descargar cloud.sh desde el repositorio
+echo "========================================================================="
 echo "Tomando restart.sh del repositorio..."
 wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/cloud.sh
 chmod +x cloud.sh
@@ -263,6 +272,7 @@ sudo sed -i "s/servername/$ServerName/g" cloud.sh
 #sed -i "s:cloudname:$CloudName:g" cloud.sh
 
 # Configuración del servicio
+echo "========================================================================="
 echo "Configurando el servicio Minecraft $ServerName ..."
 sudo wget -O /etc/systemd/system/$ServerName.service https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/minecraftbe.service
 sudo chmod +x /etc/systemd/system/$ServerName.service
@@ -273,6 +283,7 @@ sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
 sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
 
+echo "========================================================================="
 echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
 read answer < /dev/tty
 if [ "$answer" != "${answer#[Yy]}" ]; then
@@ -281,10 +292,13 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
   # Reinicio automático a las 4 am
   TimeZone=$(cat /etc/timezone)
   CurrentTime=$(date)
+  echo "========================================================================="
   echo "Zona horaria actual del sistema: $TimeZone"
   echo "Hora actual del sistema: $CurrentTime"
+  echo "========================================================================="
   sleep 8s
   echo "Puede ajustar / eliminar el tiempo de reinicio seleccionado más tarde escribiendo crontab -e o ejecutando SetupMinecraft.sh nuevamente"
+  echo "========================================================================="
   echo -n "¿Reiniciar automáticamente y hacer una copia de seguridad del servidor a las 4 am todos los días? (y/n)"
   read answer < /dev/tty
   if [ "$answer" != "${answer#[Yy]}" ]; then
@@ -296,8 +310,12 @@ if [ "$answer" != "${answer#[Yy]}" ]; then
 fi
 
 # ¡Terminado!
+echo "========================================================================="
+echo "========================================================================="
 echo "La configuración está completa. Iniciando el servidor de Minecraft..."
 sudo systemctl start $ServerName.service
+echo "========================================================================="
+sleep 3s
 
 # Espere hasta 20 segundos para que se inicie el servidor
 StartChecks=0
@@ -310,11 +328,15 @@ while [ $StartChecks -lt 20 ]; do
 done
 
 # Forzar el cierre si el servidor aún está iniciado
+echo "========================================================================="
 if ! screen -list | grep -q "$ServerName"; then
   echo "El servidor de Minecraft no pudo iniciarse después de 20 segundos."
 else
   echo "El servidor de Minecraft se ha iniciado.  Escribe -r $ServerName para ver el servidor en ejecución!"
 fi
+echo "========================================================================="
+echo "========================================================================="
+sleep 3s
 
 # Adjuntar a la pantalla
 screen -r $ServerName
