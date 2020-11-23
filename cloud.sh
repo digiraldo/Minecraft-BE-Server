@@ -45,7 +45,7 @@ function read_with_prompt {
 # Configuración del nombre minecraft en la cuenta de la nube
 echo "========================================================================="
 echo "========================================================================="
-echo "Antes de seguir debe iniciar seccion en drive, onedrive o la nube que valla a utilizar"
+echo "Antes de seguir debe iniciar sesión en drive, onedrive o la nube que va a utilizar"
 echo "Y deberá crear la carpeta donde realizará las copias de seguridad"
 echo "========================================================================="
 echo "_________________________________________________________________________"
@@ -58,7 +58,7 @@ read_with_prompt FolderName "Nombre de Carpeta"
 echo "========================================================================="
 echo "========================================================================="
 echo "Ingrese el nombre de la nube donde creó la carpeta, ejemplo: drive, onedrive, mi_unidad..."
-echo "Se utilizará como nombre de la unidad donde se sincronizara la nube..."
+echo "Se utilizará como nombre de la unidad donde se sincronizará la nube..."
 echo "========================================================================="
 
 read_with_prompt CloudName "Nombre de la Nube"
@@ -127,7 +127,7 @@ echo "Confirme el nombre de la unidad remota que escribio en RClone"
 read_with_prompt RclonName "nombre"
 echo "========================================================================="
 
-# Montando la unidad al iniciar la maquina del servidor en crontab -e
+# Montando la unidad al iniciar la máquina del servidor en crontab -e
 cd ~
     echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
     read answer < /dev/tty
