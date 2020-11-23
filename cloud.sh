@@ -48,7 +48,7 @@ echo "========================================================================="
 echo "Antes de seguir debe iniciar seccion en drive, onedrive o la nube que valla a utilizar"
 echo "Y deberá crear la carpeta donde realizará las copias de seguridad"
 echo "========================================================================="
-echo "_________________________________________________________________________
+echo "_________________________________________________________________________"
 echo "-------------------------------------------------------------------------"
 echo "Escriba aquí el mismo nombre de la carpeta que creaste en tu cuenta de la nube"
 echo "========================================================================="
