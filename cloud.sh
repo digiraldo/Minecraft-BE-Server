@@ -89,10 +89,11 @@ cd ~
 cd minecraftbe
 cd servername
 
-# Modificar start.sh y SetupMinecraft.sh
+# Modificar start.sh y back.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/foldername/$FolderName/g" start.sh
-#sudo sed -i "s/servername/$ServerName/g" start.sh
+sudo sed -i "s/cloudname/$CloudName/g" back.sh
+sudo sed -i "s/foldername/$FolderName/g" back.sh
 
 echo "========================================================================="
 
