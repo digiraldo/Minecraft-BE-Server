@@ -61,15 +61,15 @@ fi
 echo "El directorio $DirName/$CloudName es la unidad en la Nube"
 
 # Verifique si el directorio drive/minecraft de la copia en la nube ya existe
-cd ~
-cd $CloudName
-if [ ! -d "minecraft" ]; then
-  mkdir minecraft
-  cd minecraft
-else
-  cd minecraft
-fi
-echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
+#cd ~
+#cd $CloudName
+#if [ ! -d "minecraft" ]; then
+#  mkdir minecraft
+ # cd minecraft
+#else
+ # cd minecraft
+#fi
+#echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
 # ingresar a la carpeta del servidor minecraft
 cd ~
