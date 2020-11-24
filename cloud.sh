@@ -135,14 +135,14 @@ cd ~
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="dirname/$CloudName"
       # El nombre de la unidad en RClone debe ser igual $RclonName 
-      cronjob="@reboot rclone mount $RclonName: $croncmd --allow-other &"
+      cronjob="@reboot rclone mount --allow-non-empty $RclonName: $croncmd"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
 
 #@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
 echo "========================================================================="
-echo "Montando fuse con RClone..."
+echo "Configurando Fuse..."
 echo "rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
 sleep 4s
