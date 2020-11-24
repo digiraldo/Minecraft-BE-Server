@@ -29,7 +29,7 @@ cd dirname/minecraftbe/servername
 # Crear copia de seguridad
 if [ -d "worlds" ]; then
     echo "Copia de seguridad del servidor (en la carpeta minecraftbe/servername/backups)"
-    tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_servername).tar.gz worlds
+    sudo tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_servername).tar.gz worlds
 fi
 
 # Cambiar directorio al directorio de drive
