@@ -1,7 +1,8 @@
 #!/bin/bash
 # Autor: Di Giraldo
-# Realizar Respaldo de mi nube al Servidor de Minecraft
-
+# Instale las dependencias necesarias RClone y fuse para montar la nube
+echo "tutorial de instalacion en: https://gorobeta.blogspot.com"
+sleep 4s
 
 # Función para leer la entrada del usuario con un mensaje
 function read_with_prompt {
