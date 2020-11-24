@@ -34,11 +34,10 @@ fi
 
 # Cambiar directorio al directorio de drive
 cd ~
-cd cloudname
 #Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
 #Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
 echo "========================================================================="
-if [ -d /foldername/ ];
+if [ -d /cloudname/foldername/ ];
 then
 cd ~
 cd minecraftbe
