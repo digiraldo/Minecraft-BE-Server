@@ -33,14 +33,14 @@ if [ -d "worlds" ]; then
 fi
 
 # Cambiar directorio al directorio de drive
-cd~
+cd ~
 cd cloudname
 #Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
 #Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
 echo "========================================================================="
 if [ -d /foldername/ ];
 then
-cd~
+cd ~
 cd minecraftbe
 cd servername
 sudo rsync -avz backups/ dirname/cloudname/foldername
@@ -52,7 +52,7 @@ echo "========================================================================="
 sleep 4s
 
 # Recupere la última versión del servidor dedicado Minecraft Bedrock
-cd~
+cd ~
 cd minecraftbe
 cd servername
 echo "Buscando la última versión del servidor Minecraft Bedrock ..."
