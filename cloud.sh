@@ -143,14 +143,15 @@ cd ~
 #@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
 echo "========================================================================="
 echo "Configurando Fuse..."
-echo "rclone mount $RclonName: $croncmd --allow-other &"
+echo "$cronjob"
 echo "========================================================================="
 sleep 4s
 
 sudo rclone mount $RclonName: $croncmd --allow-other &
 echo "Montando RClone con Fuse..."
+echo "rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
-sleep 3s
+sleep 4s
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
@@ -158,9 +159,8 @@ echo "========================================================================="
 echo "========================================================================="
 ls -l
 echo "========================================================================="
-#echo "Si no visualiza los archivos en dirname/$CloudName, favor reiniciar máquina"
 
-sleep 5s
+sleep 8s
 
 # Reiniciar la maquina?
 cd ~
