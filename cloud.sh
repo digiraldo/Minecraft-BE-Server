@@ -100,7 +100,7 @@ sudo sed -i "s/foldername/$FolderName/g" back.sh
 echo "========================================================================="
 
 echo "Archivos configurados..."
-sudo sed -n "/sudo rsync -avz backups/p" start.sh
+sudo sed -n "/sudo rsync -avz/p" start.sh
 
 echo "========================================================================="
 sleep 5s
