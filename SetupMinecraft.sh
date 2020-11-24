@@ -126,7 +126,7 @@ echo "========================================================================="
   
   # Descargar back.sh desde el repositorio
   echo "Tomando back.sh del repositorio..."
-  wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
+  wget -O back.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
   chmod +x back.sh
   sudo sed -i "s:dirname:$DirName:g" back.sh
   sudo sed -i "s:servername:$ServerName:g" back.sh
@@ -274,7 +274,7 @@ sudo sed -i "s/servername/$ServerName/g" cloud.sh
 # Descargar back.sh desde el repositorio
 echo "========================================================================="
   echo "Tomando back.sh del repositorio..."
-  wget -O cloud.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
+  wget -O back.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/back.sh
   chmod +x back.sh
   sudo sed -i "s:dirname:$DirName:g" back.sh
   sudo sed -i "s:servername:$ServerName:g" back.sh
