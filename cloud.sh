@@ -1,7 +1,7 @@
 #!/bin/bash
 # Autor: Di Giraldo
 # Instale las dependencias necesarias RClone y fuse para montar la nube
-echo "tutorial de instalacion en: https://gorobeta.blogspot.com/2020/11/instalar-minecraft-bedrock-edition.html"
+echo "tutorial de instalacion en: https://gorobeta.blogspot.com"
 sleep 4s
 
 cd ~
