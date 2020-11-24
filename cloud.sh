@@ -130,14 +130,14 @@ echo "Confirme el nombre de la unidad remota que escribio en RClone"
 read_with_prompt RclonName "nombre"
 echo "========================================================================="
 
-# Montando la unidad al iniciar la máquina del servidor en crontab -e
+# Montando la unidad al iniciar la máquina del servidor en crontab -e con --allow-other &
 cd ~
-    echo -n "¿Montar la unidad $DirName/$CloudName/minecraft al iniciar la maquina? (y/n)"
+    echo -n "¿Montar la unidad $DirName/$CloudName/ al iniciar la maquina? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       croncmd="dirname/$CloudName"
       # El nombre de la unidad en RClone debe ser igual $RclonName 
-      cronjob="@reboot rclone mount --allow-non-empty $RclonName: $croncmd"
+      cronjob="@reboot rclone mount $RclonName: $croncmd --allow-other &"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
