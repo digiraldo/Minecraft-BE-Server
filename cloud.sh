@@ -140,7 +140,7 @@ cd servername
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/foldername/$FolderName/g" start.sh
 sudo sed -i "s/rclonname/$RclonName/g" start.sh
-sudo sed -i "s/croncmd/$croncmd/g" start.sh
+sudo sed -i "s/cron/$croncmd/g" start.sh
 sudo sed -i "s/cloudname/$CloudName/g" back.sh
 sudo sed -i "s/foldername/$FolderName/g" back.sh
 
