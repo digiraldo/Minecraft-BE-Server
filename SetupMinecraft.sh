@@ -131,6 +131,13 @@ echo "========================================================================="
   sudo sed -i "s:dirname:$DirName:g" back.sh
   sudo sed -i "s:servername:$ServerName:g" back.sh
   
+  # Descargar config.sh desde el repositorio
+  echo "Tomando config.sh del repositorio..."
+  wget -O config.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/config.sh
+  chmod +x config.sh
+  sudo sed -i "s:dirname:$DirName:g" config.sh
+  sudo sed -i "s:servername:$ServerName:g" config.sh
+  
   # Actualizar el servicio del servidor de Minecraft
   echo "Configurando el servicio $ServerName ..."
   sudo wget -O /etc/systemd/system/$ServerName.service https://raw.githubusercontent.com/TheRemote/MinecraftBedrockServer/master/minecraftbe.service
@@ -138,6 +145,7 @@ echo "========================================================================="
   sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
   sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
   sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
+  sudo sed -i "/server-name=/c\server-name=$ServerName" server.properties
   sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
   sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
@@ -278,6 +286,14 @@ echo "========================================================================="
   chmod +x back.sh
   sudo sed -i "s:dirname:$DirName:g" back.sh
   sudo sed -i "s:servername:$ServerName:g" back.sh
+  
+  # Descargar config.sh desde el repositorio
+ echo "========================================================================="
+  echo "Tomando config.sh del repositorio..."
+  wget -O config.sh https://raw.githubusercontent.com/digiraldo/Minecraft-BE-Server/main/config.sh
+  chmod +x config.sh
+  sudo sed -i "s:dirname:$DirName:g" config.sh
+  sudo sed -i "s:servername:$ServerName:g" config.sh
 
 # Configuración del servicio
 echo "========================================================================="
@@ -287,6 +303,7 @@ sudo chmod +x /etc/systemd/system/$ServerName.service
 sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
+sudo sed -i "/server-name=/c\server-name=$ServerName" server.properties
 sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
 sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
