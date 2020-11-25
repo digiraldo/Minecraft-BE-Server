@@ -86,17 +86,6 @@ echo "El directorio $DirName/$CloudName es la unidad en la Nube"
 #fi
 #echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
 
-# ingresar a la carpeta del servidor minecraft
-cd ~
-cd minecraftbe
-cd servername
-
-# Modificar start.sh y back.sh
-sudo sed -i "s/cloudname/$CloudName/g" start.sh
-sudo sed -i "s/foldername/$FolderName/g" start.sh
-sudo sed -i "s/cloudname/$CloudName/g" back.sh
-sudo sed -i "s/foldername/$FolderName/g" back.sh
-
 echo "========================================================================="
 
 echo "Archivos configurados..."
@@ -141,6 +130,19 @@ cd ~
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
       echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
     fi
+
+# ingresar a la carpeta del servidor minecraft
+cd ~
+cd minecraftbe
+cd servername
+
+# Modificar start.sh y back.sh
+sudo sed -i "s/cloudname/$CloudName/g" start.sh
+sudo sed -i "s/foldername/$FolderName/g" start.sh
+sudo sed -i "s/rclonname/$RclonName/g" start.sh
+sudo sed -i "s/croncmd/$croncmd/g" start.sh
+sudo sed -i "s/cloudname/$CloudName/g" back.sh
+sudo sed -i "s/foldername/$FolderName/g" back.sh
 
 #@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
 echo "========================================================================="
