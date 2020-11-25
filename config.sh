@@ -81,8 +81,8 @@ sudo sed -i "/level-seed=/c\level-seed=$LevelSeed" server.properties
 
 sudo systemctl daemon-reload
 echo "========================================================================="
-speed 2s
+sleep 2s
 echo "========================================================================="
 echo "Servidor: servername Configurado..."
 echo "========================================================================="
-speed 4s
+sleep 4s
