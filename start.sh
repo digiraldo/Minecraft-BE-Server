@@ -38,7 +38,7 @@ if [ -d dirname/cloudname/foldername/ ];
 then
 echo "La carpeta cloudname/foldername esta montada..."
 else
-sudo rclone mount rclonname: croncmd --allow-other &
+sudo rclone mount rclonname: filecron --allow-other &
 echo "Montando RClone con Fuse..."
 fi
 echo "========================================================================="
@@ -47,7 +47,7 @@ sleep 4s
 # Cambiar directorio al directorio de drive
 #cd ~
 #Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
-#Tutorial de instalación de RCone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
+#Tutorial de instalación de RClone y fuse https://github.com/digiraldo/Minecraft-BE-Server/blob/main/Copias%20de%20seguridad%20en%20la%20nube.md  
 echo "========================================================================="
 if [ -d dirname/cloudname/foldername/ ];
 then
