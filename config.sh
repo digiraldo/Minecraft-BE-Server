@@ -34,6 +34,18 @@ echo "Configuración del Servidor: servername"
 sleep 3s
 
 echo "========================================================================="
+echo "Usado como nombre del servidor (predeterminado Servidor): "
+echo "Valores permitidos: cualquier cadena: "
+read_with_prompt SerVer "Nombre del Servidor" Servidor
+echo "========================================================================="
+
+echo "========================================================================="
+echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
+echo "Valores permitidos: cualquier cadena: "
+read_with_prompt LevelName "Nombre del Nivel" Bedrock level
+echo "========================================================================="
+
+echo "========================================================================="
 echo "Establece el modo de juego para nuevos jugadores (predeterminado survival): "
 echo "Valores permitidos: "survival", "creative", o "adventure": "
 read_with_prompt GamMode "Modo del Juego" survival
@@ -66,12 +78,25 @@ echo "========================================================================="
 echo "========================================================================="
 echo "Semilla (mundo aleatorio predeterminado): "
 echo "Valores permitidos: cualquier cadena: "
-read_with_prompt LevelSeed "Número de Semilla"
-echo "========================================================================="
-
+    echo -n "¿Deseas agregar un Códgo o Número de Semilla o Mundo? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      # Crear copia de seguridad
+        if [ -d "worlds" ]; then
+        echo "Copia de seguridad del servidor (en la carpeta minecraftbe/servername/backups)"
+        sudo tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_servername).tar.gz worlds
+        fi
+        sudo rm -rf worlds
+        sudo mkdir worlds
+        echo "========================================================================="
+        read_with_prompt LevelSeed "Número de Semilla"
+        echo "========================================================================="
+    fi
 
 echo "========================================================================="
 echo "Configurando el Servidor: servername ..."
+sudo sed -i "/server-name=/c\server-name=$SerVer" server.properties
+sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
 sudo sed -i "/gamemode=/c\gamemode=$GamMode" server.properties
 sudo sed -i "/difficulty=/c\difficulty=$Difficult" server.properties
 sudo sed -i "/allow-cheats=/c\allow-cheats=$AllowCheats" server.properties
@@ -79,6 +104,7 @@ sudo sed -i "/max-players=/c\max-players=$MaxPlayers" server.properties
 sudo sed -i "/white-list=/c\white-list=$WhiteList" server.properties
 sudo sed -i "/level-seed=/c\level-seed=$LevelSeed" server.properties
 
+sleep 1s
 sudo systemctl daemon-reload
 echo "========================================================================="
 sleep 2s
