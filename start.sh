@@ -32,6 +32,18 @@ if [ -d "worlds" ]; then
     sudo tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_servername).tar.gz worlds
 fi
 
+# Iniciar o comprobar inicio de Fuse en RClone
+echo "========================================================================="
+if [ -d dirname/cloudname/foldername/ ];
+then
+echo "La carpeta cloudname/foldername esta montada..."
+else
+sudo rclone mount rclonname: croncmd --allow-other &
+echo "Montando RClone con Fuse..."
+fi
+echo "========================================================================="
+sleep 4s
+
 # Cambiar directorio al directorio de drive
 #cd ~
 #Crear Copia de seguridad en la nube (predeterminado Google Drive con RClone)  
