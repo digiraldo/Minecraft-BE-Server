@@ -139,3 +139,15 @@ echo "Puerto IPV4: ............ $PortIPV4"
 echo "Puerto IPV6: ............ $PortIPV6"
 echo "========================================================================="
 sleep 4s
+
+echo "========================================================================="
+    echo -n "¿Iniciar Configuracion de Copia de seguridad en la nube? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      # Crear copia de seguridad en la nube cloudname
+        echo "========================================================================="
+        echo "Iniciando copia de Seguridad con cloud.sh"
+        echo "========================================================================="
+        sleep 3s
+        /bin/bash dirname/minecraftbe/servername/cloud.sh
+    fi
