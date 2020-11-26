@@ -181,4 +181,11 @@ echo "sudo rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
 sleep 4s
 
+
+# Adjuntar a la pantalla
+echo "Iniciando la consola con: screen -r servername"
+sleep 4s
+cd ~
+screen -r servername
+
 #sudo reboot
