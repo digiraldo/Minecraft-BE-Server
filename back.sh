@@ -56,22 +56,48 @@ echo "Sincronizando Mundo..."
 sudo rsync -vh $BackName ~/minecraftbe/servername/backups/
 sleep 3s
 
-echo "-------------------------------------------------------------------------"
-echo "Escriba aquí el nivel o nombre del mundo recuperado /wordls/nombredemundo"
-read_with_prompt WoName "Nombre del Nivel"
-
-sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
-
 # Restablecer mundos
+sudo systemctl daemon-reload
+sudo systemctl stop servername.service
 cd ~
 cd minecraftbe
 cd servername
-./stop.sh
 sudo rm -rf worlds
 sudo tar -xf backups/$BackName
+sleep 5s
 
+# Verificar archivos sincronizados
+cd ~
+cd minecraftbe
+cd servername
+cd worlds
 echo "========================================================================="
-echo "Reiniciando Servidor..."
+echo "===========================NOMBRE DEL NIVEL=============================="
+ls -lt
+echo "========================================================================="
+
+sleep 3s
+
+cd ~
+cd minecraftbe
+cd servername
+echo "========================================================================="
+echo "Escriba aquí el nivel o nombre del mundo recuperado"
+read -p "Nombre del Nivel: " WoName
+if [ "$WoName" != "" ]
+then
+    echo "Actualizando Nombre de nivel a $WoName"
+    sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
+    echo "========================================================================="
+    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
+else
+    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel Actual ........ /'
+fi
+sudo sed -i "/level-seed=/c\level-seed=" server.properties
+sleep 3s
+
+echo "========================REINICIANDO SERVIDOR=============================="
+
 sleep 2s
 
 # Iniciar servidor
