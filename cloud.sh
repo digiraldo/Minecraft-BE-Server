@@ -89,7 +89,8 @@ echo "El directorio $DirName/$CloudName es la unidad en la Nube"
 echo "========================================================================="
 
 echo "Archivos configurados..."
-sudo sed -n "/sudo rsync -avz/p" start.sh
+#sudo sed -n "/sudo rsync -avz/p" start.sh
+sudo sed -n "/sudo rsync -avz /p" start.sh
 
 echo "========================================================================="
 sleep 5s
