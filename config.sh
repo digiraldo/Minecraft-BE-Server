@@ -39,11 +39,11 @@ echo "Valores permitidos: cualquier cadena: "
 read_with_prompt SerVer "Nombre del Servidor" Servidor
 echo "========================================================================="
 
-echo "========================================================================="
-echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
-echo "Valores permitidos: cualquier cadena: "
-read_with_prompt LevelName "Nombre del Nivel" Bedrock level
-echo "========================================================================="
+#echo "========================================================================="
+#echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
+#echo "Valores permitidos: cualquier cadena: "
+#read_with_prompt LevelName "Nombre del Nivel" Bedrock level
+#echo "========================================================================="
 
 echo "========================================================================="
 echo "Establece el modo de juego para nuevos jugadores (predeterminado survival): "
@@ -107,7 +107,7 @@ echo "========================================================================="
 echo "========================================================================="
 echo "Configurando el Servidor: servername ..."
 sudo sed -i "/server-name=/c\server-name=$SerVer" server.properties
-sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
+#sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
 sudo sed -i "/gamemode=/c\gamemode=$GamMode" server.properties
 sudo sed -i "/difficulty=/c\difficulty=$Difficult" server.properties
 sudo sed -i "/allow-cheats=/c\allow-cheats=$AllowCheats" server.properties
@@ -126,7 +126,7 @@ sleep 2s
 echo "Servidor: servername Configurado..."
 echo "========================================================================="
 echo "Nombre del Servidor: .... $SerVer"
-echo "Nombre del Nivel: ....... $LevelName"
+#echo "Nombre del Nivel: ....... $LevelName"
 echo "Modo del Juego: ......... $GamMode"
 echo "Dificultad del Mundo: ... $Difficult"
 echo "Usar Trucos: ............ $AllowCheats"
