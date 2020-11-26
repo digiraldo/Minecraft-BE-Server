@@ -53,16 +53,22 @@ read_with_prompt BackName "Nombre del Mundo"
 echo "========================================================================="
 echo "-------------------------------------------------------------------------"
 echo "Sincronizando Mundo..."
-rsync -vh $BackName ~/minecraftbe/servername/backups/
+sudo rsync -vh $BackName ~/minecraftbe/servername/backups/
 sleep 3s
+
+echo "-------------------------------------------------------------------------"
+echo "Escriba aquí el nombre o nivel del mundo sincronizado que aparece despues de /wordls/nombredemundo"
+read_with_prompt WoName "Nombre del Nivel"
+
+sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
 
 # Restablecer mundos
 cd ~
 cd minecraftbe
 cd servername
 ./stop.sh
-rm -rf worlds
-tar -xf backups/$BackName
+sudo rm -rf worlds
+sudo tar -xf backups/$BackName
 
 echo "========================================================================="
 echo "Reiniciando Servidor..."
