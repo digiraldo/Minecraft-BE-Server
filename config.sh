@@ -119,9 +119,7 @@ sudo sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 
 sleep 1s
 sudo systemctl daemon-reload
-sudo systemctl stop servername.service
-sudo systemctl start servername.service
-
+sudo systemctl restart servername.service
 
 sleep 2s
 
