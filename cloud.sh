@@ -60,7 +60,7 @@ read_with_prompt FolderName "Nombre de Carpeta"
 echo "========================================================================="
 echo "========================================================================="
 echo "Ingrese el nombre de la nube donde creó la carpeta, ejemplo: drive, onedrive, mi_unidad..."
-echo "Se utilizará como nombre de la unidad donde se sincronizará la nube..."
+echo "Se utilizará como nombre de la unidad en el Servidor..."
 echo "========================================================================="
 
 read_with_prompt CloudName "Nombre de la Nube"
