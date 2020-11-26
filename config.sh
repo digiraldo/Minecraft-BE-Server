@@ -94,6 +94,7 @@ echo "Valores permitidos: cualquier cadena: "
     fi
 
 echo "========================================================================="
+echo "========================================================================="
 echo "Configurando el Servidor: servername ..."
 sudo sed -i "/server-name=/c\server-name=$SerVer" server.properties
 sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
@@ -106,9 +107,21 @@ sudo sed -i "/level-seed=/c\level-seed=$LevelSeed" server.properties
 
 sleep 1s
 sudo systemctl daemon-reload
-echo "========================================================================="
+sudo systemctl stop servername.service
+sudo systemctl start servername.service
+
+
 sleep 2s
-echo "========================================================================="
+
 echo "Servidor: servername Configurado..."
+echo "========================================================================="
+echo "Nombre del Servidor: .... $SerVer"
+echo "Nombre del Nivel: ....... $LevelName"
+echo "Modo del Juego: ......... $GamMode"
+echo "Dificultad del Mundo: ... $Difficult"
+echo "Usar Trucos: ............ $AllowCheats"
+echo "Jugadores Máximos: ...... $MaxPlayers"
+echo "Permiso de Jugadores: ... $WhiteList"
+echo "Número de Semilla: ...... $LevelSeed"
 echo "========================================================================="
 sleep 4s
