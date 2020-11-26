@@ -75,12 +75,6 @@ echo "Se utilizará como nombre de la carpeta y el nombre del servicio..."
 echo "========================================================================="
 read_with_prompt ServerName "Nombre de Servidor"
 
-echo "Introduzca el puerto IPV4 del servidor (predeterminado 19132): "
-read_with_prompt PortIPV4 "Puerto IPV4 del servidor" 19132
-
-echo "Introduzca el puerto IPV6 del servidor (predeterminado 19133): "
-read_with_prompt PortIPV6 "Puerto IPV6 del servidor" 19133
-
 echo "========================================================================="
 if [ -d "$ServerName" ]; then
   echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio..."
@@ -146,8 +140,6 @@ echo "========================================================================="
   sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
   sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
   sudo sed -i "/server-name=/c\server-name=$ServerName" server.properties
-  sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
-  sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
   sudo systemctl daemon-reload
   echo -n "¿Iniciar el servidor de Minecraft automáticamente? (y/n)?"
   read answer < /dev/tty
@@ -304,8 +296,6 @@ sudo sed -i "s/replace/$UserName/g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:dirname:$DirName:g" /etc/systemd/system/$ServerName.service
 sudo sed -i "s:servername:$ServerName:g" /etc/systemd/system/$ServerName.service
 sudo sed -i "/server-name=/c\server-name=$ServerName" server.properties
-sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
-sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 sudo systemctl daemon-reload
 
 echo "========================================================================="
