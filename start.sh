@@ -38,7 +38,7 @@ if [ -d dirname/cloudname/foldername/ ];
 then
 echo "La carpeta cloudname/foldername esta montada..."
 else
-sudo rclone mount rclonname: filecron --allow-other &
+sudo rclone mount rclonname: dirname/cloudname --allow-other &
 echo "Montando RClone con Fuse..."
 fi
 echo "========================================================================="
