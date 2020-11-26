@@ -57,7 +57,7 @@ sudo rsync -vh $BackName ~/minecraftbe/servername/backups/
 sleep 3s
 
 echo "-------------------------------------------------------------------------"
-echo "Escriba aquí el nombre o nivel del mundo sincronizado que aparece despues de /wordls/nombredemundo"
+echo "Escriba aquí el nivel o nombre del mundo recuperado /wordls/nombredemundo"
 read_with_prompt WoName "Nombre del Nivel"
 
 sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
