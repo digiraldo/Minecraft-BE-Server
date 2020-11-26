@@ -96,8 +96,8 @@ echo "Valores permitidos: cualquier cadena: "
         echo "Copia de seguridad del servidor (en la carpeta minecraftbe/servername/backups)"
         sudo tar -pzvcf backups/$(date +%d.%m.%Y_%H.%M.%S_servername).tar.gz worlds
         fi
-        sudo rm -rf worlds
-        sudo mkdir worlds
+        #sudo rm -rf worlds
+        #sudo mkdir worlds
         echo "========================================================================="
         read_with_prompt LevelSeed "Número de Semilla"
         echo "========================================================================="
