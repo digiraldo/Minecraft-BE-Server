@@ -353,5 +353,17 @@ echo "========================================================================="
 echo "========================================================================="
 sleep 3s
 
+echo "========================================================================="
+    echo -n "¿Iniciar Configuracion del Servidor: $ServerName? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      # Crear copia de seguridad en la nube cloudname
+        echo "========================================================================="
+        echo "Iniciando Configuracion con config.sh"
+        echo "========================================================================="
+        sleep 3s
+        /bin/bash $DirName/minecraftbe/$ServerName/config.sh
+    fi
+
 # Adjuntar a la pantalla
-screen -r $ServerName
+#screen -r $ServerName
