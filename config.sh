@@ -39,11 +39,11 @@ echo "Valores permitidos: cualquier cadena: "
 read_with_prompt SerVer "Nombre del Servidor" Servidor
 echo "========================================================================="
 
-#echo "========================================================================="
-#echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
-#echo "Valores permitidos: cualquier cadena: "
-#read_with_prompt LevelName "Nombre del Nivel" Bedrock level
-#echo "========================================================================="
+echo "========================================================================="
+echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
+echo "Valores permitidos: cualquier cadena: "
+read_with_prompt LevelName "Nombre del Nivel" Bedrock level
+echo "========================================================================="
 
 echo "========================================================================="
 echo "Establece el modo de juego para nuevos jugadores (predeterminado survival): "
@@ -107,7 +107,7 @@ echo "========================================================================="
 echo "========================================================================="
 echo "Configurando el Servidor: servername ..."
 sudo sed -i "/server-name=/c\server-name=$SerVer" server.properties
-#sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
+sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
 sudo sed -i "/gamemode=/c\gamemode=$GamMode" server.properties
 sudo sed -i "/difficulty=/c\difficulty=$Difficult" server.properties
 sudo sed -i "/allow-cheats=/c\allow-cheats=$AllowCheats" server.properties
@@ -125,16 +125,16 @@ sleep 2s
 
 echo "Servidor: servername Configurado..."
 echo "========================================================================="
-echo "Nombre del Servidor: .... $SerVer"
-#echo "Nombre del Nivel: ....... $LevelName"
-echo "Modo del Juego: ......... $GamMode"
-echo "Dificultad del Mundo: ... $Difficult"
-echo "Usar Trucos: ............ $AllowCheats"
-echo "Jugadores Máximos: ...... $MaxPlayers"
-echo "Permiso de Jugadores: ... $WhiteList"
-echo "Número de Semilla: ...... $LevelSeed"
-echo "Puerto IPV4: ............ $PortIPV4"
-echo "Puerto IPV6: ............ $PortIPV6"
+sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Nombre del Servidor: .... /'
+sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
+sudo sed -n "/gamemode=/p" server.properties | sed 's/gamemode=/Modo del Juego: ......... /'
+sudo sed -n "/difficulty=/p" server.properties | sed 's/difficulty=/Dificultad del Mundo: ... /'
+sudo sed -n "/allow-cheats=/p" server.properties | sed 's/allow-cheats=/Usar Trucos: ............ /'
+sudo sed -n "/max-players=/p" server.properties | sed 's/max-players=/Jugadores Máximos: ...... /'
+sudo sed -n "/white-list=/p" server.properties | sed 's/white-list=/Permiso de Jugadores: ... /'
+sudo sed -n "/level-seed=/p" server.properties | sed 's/level-seed=/Número de Semilla: ...... /'
+sudo sed -n "/server-port=/p" server.properties | sed 's/server-port=/Puerto IPV4: ............ /'
+sudo sed -n "/server-portv6=/p" server.properties | sed 's/server-portv6=/Puerto IPV6: ............ /'
 echo "========================================================================="
 sleep 4s
 
