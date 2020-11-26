@@ -140,14 +140,12 @@ cd servername
 # Modificar start.sh y back.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/foldername/$FolderName/g" start.sh
-sudo sed -i "s/rclonname/$RclonName/g" start.sh
-sudo sed -i "s/filecron/$croncmd/g" start.sh
+sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/cloudname/$CloudName/g" back.sh
 sudo sed -i "s/foldername/$FolderName/g" back.sh
 
-#@reboot rclone mount drive: /drive --allow-other &    --  sudo rclone mount --allow-non-empty drive: /root/drive
 echo "========================================================================="
-echo "Configurando Fuse..."
+echo "Configurando inicio de Fuse en Crontab..."
 echo "$cronjob"
 echo "========================================================================="
 sleep 4s
