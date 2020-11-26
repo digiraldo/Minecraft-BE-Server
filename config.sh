@@ -76,6 +76,16 @@ read_with_prompt WhiteList "Permiso de Jugadores" false
 echo "========================================================================="
 
 echo "========================================================================="
+echo "Introduzca el puerto IPV4 del servidor (predeterminado 19132): "
+read_with_prompt PortIPV4 "Puerto IPV4 del servidor" 19132
+echo "========================================================================="
+
+echo "========================================================================="
+echo "Introduzca el puerto IPV6 del servidor (predeterminado 19133): "
+read_with_prompt PortIPV6 "Puerto IPV6 del servidor" 19133
+echo "========================================================================="
+
+echo "========================================================================="
 echo "Semilla (mundo aleatorio predeterminado): "
 echo "Valores permitidos: cualquier cadena: "
     echo -n "¿Deseas agregar un Códgo o Número de Semilla o Mundo? (y/n)"
@@ -104,6 +114,8 @@ sudo sed -i "/allow-cheats=/c\allow-cheats=$AllowCheats" server.properties
 sudo sed -i "/max-players=/c\max-players=$MaxPlayers" server.properties
 sudo sed -i "/white-list=/c\white-list=$WhiteList" server.properties
 sudo sed -i "/level-seed=/c\level-seed=$LevelSeed" server.properties
+sudo sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
+sudo sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 
 sleep 1s
 sudo systemctl daemon-reload
@@ -123,5 +135,7 @@ echo "Usar Trucos: ............ $AllowCheats"
 echo "Jugadores Máximos: ...... $MaxPlayers"
 echo "Permiso de Jugadores: ... $WhiteList"
 echo "Número de Semilla: ...... $LevelSeed"
+echo "Puerto IPV4: ............ $PortIPV4"
+echo "Puerto IPV6: ............ $PortIPV6"
 echo "========================================================================="
 sleep 4s
