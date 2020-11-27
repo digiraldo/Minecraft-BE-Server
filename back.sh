@@ -29,6 +29,10 @@ function read_with_prompt {
   done
 }
 
+echo "========================================================================="
+echo "Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname/foldername"
+sleep 4s
+
 # Buscar los respaldos en la nube cloudname/foldername
 echo "========================================================================="
 echo "========================================================================="
@@ -42,9 +46,22 @@ cd ~
 cd cloudname
 cd foldername
 echo "========================================================================="
-echo "========================================================================="
+echo "==========================ARCHIVOS EN LA NUBE============================"
 ls -lt
 echo "========================================================================="
+
+echo "========================================================================="
+    echo -n "Si no ve el Mundo, sÚbelo a la nube y confirma con si (y) para visualizarlo (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      # Escanear la nube cloudname/foldername
+        echo "========================================================================="
+        echo "==========================ARCHIVOS EN LA NUBE============================"
+        echo "Iniciando Escaneo de la nube cloudname/foldername"
+        ls -lt
+        echo "========================================================================="
+        sleep 3s
+    fi
 
 echo "-------------------------------------------------------------------------"
 echo "Escriba aquí el nombre del mundo a restaurar"
