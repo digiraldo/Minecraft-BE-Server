@@ -54,6 +54,7 @@ echo "========================================================================="
 Print_Style "ADVERTENCIA: Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube," "$RED"
 Print_Style "por lo cual se requiere que inicie seccion y suba el archivo y espere a que cargue," "$RED"
 Print_Style "más adelante se le preguntará si ha subido el archivo o mundo a su nube por si no lo ha subido" "$RED"
+read -n1 -r -p "Presione cualquier tecla para continuar"
 sleep 4s
 
 # Buscar los respaldos en la nube cloudname/foldername
