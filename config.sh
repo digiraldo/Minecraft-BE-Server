@@ -29,6 +29,27 @@ function read_with_prompt {
   done
 }
 
+# Colores del terminal
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+LIME_YELLOW=$(tput setaf 190)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+# Imprime una línea con color usando códigos de terminal
+Print_Style() {
+  printf "%s\n" "${2}$1${NORMAL}"
+}
+
 # Configuración de juego en el servidor
 echo "Configuración del Servidor: servername"
 sleep 3s
@@ -123,7 +144,7 @@ sudo systemctl restart servername.service
 
 sleep 2s
 
-echo "Servidor: servername Configurado..."
+Print_Style "Servidor: servername Configurado..." "$LIME_YELLOW"
 echo "========================================================================="
 sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Nombre del Servidor: .... /'
 sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
