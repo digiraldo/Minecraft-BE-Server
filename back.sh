@@ -29,15 +29,38 @@ function read_with_prompt {
   done
 }
 
+# Colores del terminal
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+LIME_YELLOW=$(tput setaf 190)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+# Imprime una línea con color usando códigos de terminal
+Print_Style() {
+  printf "%s\n" "${2}$1${NORMAL}"
+}
+
 echo "========================================================================="
-echo "Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname/foldername"
+Print_Style "ADVERTENCIA: Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube," "$RED"
+Print_Style "por lo cual se requiere que inicie seccion y suba el archivo y espere a que cargue," "$RED"
+Print_Style "más adelante se le preguntará si ha subido el archivo o mundo a su nube por si no lo ha subido" "$RED"
 sleep 4s
 
 # Buscar los respaldos en la nube cloudname/foldername
 echo "========================================================================="
 echo "========================================================================="
-echo "Buscando respaldos en su nube dirname/cloudname/foldername"
-echo "Espere un momento..."
+Print_Style "Buscando respaldos en su nube dirname/cloudname/foldername" "$CYAN"
+Print_Style "Espere un momento..." "$BLUE"
 echo "========================================================================="
 sleep 3s
 
@@ -46,7 +69,7 @@ cd ~
 cd cloudname
 cd foldername
 echo "========================================================================="
-echo "==========================ARCHIVOS EN LA NUBE============================"
+Print_Style "==========================ARCHIVOS EN LA NUBE============================" "$GREEN"
 ls -lt
 echo "========================================================================="
 
@@ -59,20 +82,20 @@ echo "========================================================================="
       cd cloudname
       cd foldername
         echo "========================================================================="
-        echo "==========================ARCHIVOS EN LA NUBE============================"
-        echo "Iniciando Escaneo de la nube cloudname/foldername"
+        Print_Style "Iniciando Escaneo de la nube cloudname/foldername" "$CYAN"
+        Print_Style "==========================ARCHIVOS EN LA NUBE============================" "$GREEN"
         ls -lt
         echo "========================================================================="
         sleep 3s
     fi
 
 echo "-------------------------------------------------------------------------"
-echo "Escriba aquí el nombre del mundo a restaurar"
+Print_Style "Escriba aquí el nombre del mundo a restaurar" "$LIME_YELLOW"
 read_with_prompt BackName "Nombre del Mundo"
 
 echo "========================================================================="
 echo "-------------------------------------------------------------------------"
-echo "Sincronizando Mundo..."
+Print_Style "Sincronizando Mundo..." "$BLUE"
 sudo rsync -vh $BackName ~/minecraftbe/servername/backups/
 sleep 3s
 
@@ -92,7 +115,7 @@ cd minecraftbe
 cd servername
 cd worlds
 echo "========================================================================="
-echo "===========================NOMBRE DEL NIVEL=============================="
+Print_Style "===========================NOMBRE DEL NIVEL==============================" "$YELLOW"
 ls -lt
 echo "========================================================================="
 
@@ -102,11 +125,11 @@ cd ~
 cd minecraftbe
 cd servername
 echo "========================================================================="
-echo "Escriba aquí el nivel o nombre del mundo recuperado"
+Print_Style "Escriba aquí el nivel o nombre del mundo recuperado" "$CYAN"
 read -p "Nombre del Nivel: " WoName
 if [ "$WoName" != "" ]
 then
-    echo "Actualizando Nombre de nivel a $WoName"
+    Print_Style "Actualizando Nombre de nivel a $WoName" "$MAGENTA"
     sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
     echo "========================================================================="
     sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
@@ -116,7 +139,7 @@ fi
 sudo sed -i "/level-seed=/c\level-seed=" server.properties
 sleep 3s
 
-echo "========================REINICIANDO SERVIDOR=============================="
+Print_Style "========================REINICIANDO SERVIDOR==============================" "$REVERSE"
 
 sleep 2s
 
