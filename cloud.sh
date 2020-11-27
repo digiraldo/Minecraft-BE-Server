@@ -75,23 +75,15 @@ else
 fi
 echo "El directorio $DirName/$CloudName es la unidad en la Nube"
 
-# Verifique si el directorio drive/minecraft de la copia en la nube ya existe
-#cd ~
-#cd $CloudName
-#if [ ! -d "minecraft" ]; then
-#  mkdir minecraft
- # cd minecraft
-#else
- # cd minecraft
-#fi
-#echo "El directorio $DirName/$CloudName/minecraft es la copia del Mundo Minecraft en la nube"
-
 echo "========================================================================="
 
-echo "Archivos configurados..."
-#sudo sed -n "/sudo rsync -avz/p" start.sh
-sudo sed -n "/sudo rsync -avz /p" start.sh
-
+echo "Archivos configurados para el inicio sel sevidor..."
+# ingresar a la carpeta del servidor minecraft
+cd ~
+cd minecraftbe
+cd servername
+# Mostrar codigo de sincronizacion de la nube en start.sh
+sudo sed -n "/sudo rsync -avz/p" start.sh
 echo "========================================================================="
 sleep 5s
 
@@ -192,13 +184,13 @@ echo "========================================================================="
 sleep 4s
 
 echo "========================================================================="
-echo "Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname"
+echo "Si va a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname"
     echo -n "¿Iniciar Recuperacion de un Mundo? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       # Recuperar mundo e instalarlo en el servidor
         echo "========================================================================="
-        echo "Iniciando Recuperación con cloud.sh"
+        echo "Iniciando Recuperación con back.sh"
         echo "========================================================================="
         sleep 3s
         /bin/bash dirname/minecraftbe/servername/back.sh
@@ -209,5 +201,3 @@ echo "Iniciando la consola con: screen -r servername"
 sleep 4s
 cd ~
 screen -r servername
-
-#sudo reboot
