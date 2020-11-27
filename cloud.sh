@@ -167,7 +167,7 @@ sleep 8s
 
 # Reiniciar la maquina?
 cd ~
-    echo -n "¿Reiniciar la máquina o servidor? (y/n)"
+    echo -n "¿Reiniciar la máquina o computador? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       sudo reboot
@@ -176,7 +176,7 @@ cd ~
 
 # Reiniciar el servidor?
 cd ~
-    echo -n "¿Reiniciar la máquina o servidor? (y/n)"
+    echo -n "¿Reiniciar el Servidor Minecraft? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       sudo systemctl daemon-reload
@@ -201,7 +201,7 @@ echo "Si vas a instalar o recuperar un mundo en este servidor, este debe estar e
         echo "Iniciando Recuperación con cloud.sh"
         echo "========================================================================="
         sleep 3s
-        /bin/bash dirname/minecraftbe/servername/cloud.sh
+        /bin/bash dirname/minecraftbe/servername/back.sh
     fi
 
 # Adjuntar a la pantalla
