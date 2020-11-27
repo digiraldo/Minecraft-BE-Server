@@ -99,16 +99,6 @@ Print_Style "El directorio $DirName/$CloudName es la unidad en la Nube" "$GREEN"
 
 echo "========================================================================="
 
-Print_Style "Archivos configurados para el inicio sel sevidor..." "$CYAN"
-# ingresar a la carpeta del servidor minecraft
-cd ~
-cd minecraftbe
-cd servername
-# Mostrar codigo de sincronizacion de la nube en start.sh
-sudo sed -n "/sudo rsync -avz/p" start.sh
-echo "========================================================================="
-sleep 5s
-
 # Modificar archivo fuse.conf
 cd ~
 sudo chmod +x /etc/fuse.conf
@@ -154,7 +144,6 @@ cd servername
 # Modificar start.sh y back.sh
 sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/foldername/$FolderName/g" start.sh
-sudo sed -i "s/cloudname/$CloudName/g" start.sh
 sudo sed -i "s/cloudname/$CloudName/g" back.sh
 sudo sed -i "s/foldername/$FolderName/g" back.sh
 
@@ -169,6 +158,7 @@ Print_Style "Montando RClone con Fuse..." "$YELLOW"
 Print_Style "rclone mount $RclonName: $croncmd --allow-other &" "$MAGENTA"
 echo "========================================================================="
 sleep 4s
+
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
@@ -176,8 +166,17 @@ echo "========================================================================="
 Print_Style "==================ARCHIVOS Y DIRECTORIOS DE LA NUBE======================" "$GREEN"
 ls -l
 echo "========================================================================="
-
 sleep 8s
+
+Print_Style "Archivos configurados para el inicio sel sevidor en start.sh..." "$CYAN"
+# ingresar a la carpeta del servidor minecraft
+cd ~
+cd minecraftbe
+cd servername
+# Mostrar codigo de sincronizacion de la nube en start.sh
+sudo sed -n "/sudo rsync -avz/p" start.sh
+echo "========================================================================="
+sleep 5s
 
 # Reiniciar la maquina?
 cd ~
