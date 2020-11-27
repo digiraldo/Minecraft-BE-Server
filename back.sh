@@ -51,10 +51,13 @@ ls -lt
 echo "========================================================================="
 
 echo "========================================================================="
-    echo -n "Si no ve el Mundo, sÚbelo a la nube y confirma con si (y) para visualizarlo (y/n)"
+    echo -n "Si no ve el Mundo, súbelo a la nube y confirma con si (y) para visualizarlo (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       # Escanear la nube cloudname/foldername
+      cd ~
+      cd cloudname
+      cd foldername
         echo "========================================================================="
         echo "==========================ARCHIVOS EN LA NUBE============================"
         echo "Iniciando Escaneo de la nube cloudname/foldername"
