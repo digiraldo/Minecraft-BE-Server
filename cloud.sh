@@ -43,24 +43,46 @@ function read_with_prompt {
   done
 }
 
+# Colores del terminal
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+LIME_YELLOW=$(tput setaf 190)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+
+# Imprime una línea con color usando códigos de terminal
+Print_Style() {
+  printf "%s\n" "${2}$1${NORMAL}"
+}
 
 # Configuración del nombre minecraft en la cuenta de la nube
 echo "========================================================================="
 echo "========================================================================="
-echo "Antes de seguir debe iniciar sesión en drive, onedrive o la nube que va a utilizar"
-echo "Y deberá crear la carpeta donde realizará las copias de seguridad"
-echo "========================================================================="
+Print_Style "ADVERTENCIA: Antes de seguir debe iniciar sesión en" "$RED"
+Print_Style "drive, onedrive o la nube que va a utilizar Y deberá" "$RED"
+Print_Style "crear la carpeta donde realizará las copias de seguridad" "$RED"
 echo "_________________________________________________________________________"
+read -n1 -r -p "Presione cualquier tecla para continuar"
+
 echo "-------------------------------------------------------------------------"
-echo "Escriba aquí el mismo nombre de la carpeta que creaste en tu cuenta de la nube"
+Print_Style "Escriba aquí el mismo nombre de la carpeta que creaste en tu cuenta de la nube" "$CYAN"
 echo "========================================================================="
 read_with_prompt FolderName "Nombre de Carpeta"
 
 # Configuración del nombre del servidor
 echo "========================================================================="
 echo "========================================================================="
-echo "Ingrese el nombre de la nube donde creó la carpeta, ejemplo: drive, onedrive, mi_unidad..."
-echo "Se utilizará como nombre de la unidad en el Servidor..."
+Print_Style "Ingrese el nombre de la nube donde creó la carpeta, ejemplo: drive, onedrive, mi_unidad..." "$MAGENTA"
+Print_Style "Se utilizará como nombre de la unidad en el Servidor..." "$YELLOW"
 echo "========================================================================="
 
 read_with_prompt CloudName "Nombre de la Nube"
@@ -73,11 +95,11 @@ if [ ! -d "$CloudName" ]; then
 else
   cd $CloudName
 fi
-echo "El directorio $DirName/$CloudName es la unidad en la Nube"
+Print_Style "El directorio $DirName/$CloudName es la unidad en la Nube" "$GREEN"
 
 echo "========================================================================="
 
-echo "Archivos configurados para el inicio sel sevidor..."
+Print_Style "Archivos configurados para el inicio sel sevidor..." "$CYAN"
 # ingresar a la carpeta del servidor minecraft
 cd ~
 cd minecraftbe
@@ -92,7 +114,7 @@ cd ~
 sudo chmod +x /etc/fuse.conf
 #sudo sed -i "s/# Allow non-root users to specify the allow_other or allow_root mount options./ Allow non-root users to specify the allow_other or allow_root mount options./g" /etc/fuse.conf
 sudo sed -i "s/#user_allow_other/user_allow_other/g" /etc/fuse.conf
-echo "Archivo fuse configurado..."
+Print_Style "Archivo fuse configurado..." "$GREEN"
 sudo sed -n "/# Allow/p" /etc/fuse.conf
 sudo sed -n "/user_allow_other/p" /etc/fuse.conf
 
@@ -100,7 +122,7 @@ sleep 3s
 
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  echo "Realizar inicio de seccion en la cuenta de la nube para la carpeta $DirName/$CloudName ..."
+  Print_Style "Realizar inicio de seccion en la cuenta de la nube para la carpeta $DirName/$CloudName ..." "$MAGENTA"
 
   sleep 4s
 
@@ -108,7 +130,7 @@ sleep 3s
 
 # Confirme el nombre de la unidad remota de rclone
 echo "========================================================================="
-echo "Confirme el nombre de la unidad remota que escribio en RClone"
+Print_Style "Confirme el nombre de la unidad remota que escribio en RClone" "$YELLOW"
 read_with_prompt RclonName "nombre"
 echo "========================================================================="
 
@@ -121,7 +143,7 @@ cd ~
       # El nombre de la unidad en RClone debe ser igual $RclonName 
       cronjob="@reboot rclone mount $RclonName: $croncmd --allow-other &"
       ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
-      echo "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e"
+      Print_Style "Montaje de la Unidad programada. Para cambiar o eliminar el montaje automático, escriba crontab -e" "$GREEN"
     fi
 
 # ingresar a la carpeta del servidor minecraft
@@ -137,21 +159,21 @@ sudo sed -i "s/cloudname/$CloudName/g" back.sh
 sudo sed -i "s/foldername/$FolderName/g" back.sh
 
 echo "========================================================================="
-echo "Configurando inicio de Fuse en Crontab..."
+Print_Style "Configurando inicio de Fuse en Crontab..." "$CYAN"
 echo "$cronjob"
 echo "========================================================================="
 sleep 4s
 
 sudo rclone mount $RclonName: $croncmd --allow-other &
-echo "Montando RClone con Fuse..."
-echo "rclone mount $RclonName: $croncmd --allow-other &"
+Print_Style "Montando RClone con Fuse..." "$YELLOW"
+Print_Style "rclone mount $RclonName: $croncmd --allow-other &" "$MAGENTA"
 echo "========================================================================="
 sleep 4s
 # Verificar archivos sincronizados
 cd ~
 cd $CloudName
 echo "========================================================================="
-echo "========================================================================="
+Print_Style "==================ARCHIVOS Y DIRECTORIOS DE LA NUBE======================" "$GREEN"
 ls -l
 echo "========================================================================="
 
@@ -163,7 +185,7 @@ cd ~
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       sudo reboot
-      echo "Reiniciando Máquina o Servidor..."
+Print_Style "========================REINICIANDO MÁQUINA==============================" "$REVERSE"
     fi
 
 # Reiniciar el servidor?
@@ -174,30 +196,26 @@ cd ~
       sudo systemctl daemon-reload
       sudo systemctl restart servername.service
       sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Reiniciando Servidor: .... /'
+Print_Style "========================REINICIANDO SERVIDOR==============================" "$BLINK"
     fi
 
-
 echo "========================================================================="
-echo "El siguiente codigo es para montar el disco de la nube"
-echo "sudo rclone mount $RclonName: $croncmd --allow-other &"
-echo "========================================================================="
-sleep 4s
-
-echo "========================================================================="
-echo "Si va a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname"
+Print_Style "ADVERTENCIA: Si va a instalar o recuperar un mundo en este servidor," "$RED"
+Print_Style "este debe estar en la nube de su cuenta sincronizada de Google Drive," "$RED"
+Print_Style "Microsoft Driva, Mega, Amazon u Otra" "$RED"
     echo -n "¿Iniciar Recuperacion de un Mundo? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       # Recuperar mundo e instalarlo en el servidor
         echo "========================================================================="
-        echo "Iniciando Recuperación con back.sh"
+        Print_Style "Iniciando Recuperación con back.sh" "$YELLOW"
         echo "========================================================================="
         sleep 3s
         /bin/bash dirname/minecraftbe/servername/back.sh
     fi
 
 # Adjuntar a la pantalla
-echo "Iniciando la consola con: screen -r servername"
+Print_Style "Iniciando la consola con: screen -r servername" "$REVERSE"
 sleep 4s
 cd ~
 screen -r servername
