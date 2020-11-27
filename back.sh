@@ -51,9 +51,10 @@ Print_Style() {
 }
 
 echo "========================================================================="
-Print_Style "ADVERTENCIA: Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube," "$RED"
-Print_Style "por lo cual se requiere que inicie seccion y suba el archivo y espere a que cargue," "$RED"
-Print_Style "más adelante se le preguntará si ha subido el archivo o mundo a su nube por si no lo ha subido" "$RED"
+Print_Style "ADVERTENCIA: Si va a instalar o recuperar un mundo en este servidor," "$RED"
+Print_Style "este debe estar en la nube, por lo cual se requiere que inicie seccion" "$RED"
+Print_Style "y suba el archivo y espere a que cargue, más adelante se le preguntará" "$RED"
+Print_Style "si ha subido el archivo o mundo a su nube por si no lo ha subido" "$RED"
 read -n1 -r -p "Presione cualquier tecla para continuar"
 sleep 4s
 
@@ -79,6 +80,10 @@ echo "========================================================================="
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       # Escanear la nube cloudname/foldername
+      Print_Style "Buscando respaldos en su nube dirname/cloudname/foldername" "$CYAN"
+      Print_Style "Espere un momento..." "$BLUE"
+      echo "========================================================================="
+      sleep 4s
       cd ~
       cd cloudname
       cd foldername
