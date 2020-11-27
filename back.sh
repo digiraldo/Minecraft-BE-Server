@@ -91,7 +91,7 @@ echo "========================================================================="
     fi
 
 echo "-------------------------------------------------------------------------"
-Print_Style "Escriba aquí el nombre del mundo a restaurar" "$LIME_YELLOW"
+Print_Style "Escriba aquí el nombre del mundo a restaurar" "$CYAN"
 read_with_prompt BackName "Nombre del Mundo"
 
 echo "========================================================================="
