@@ -63,8 +63,25 @@ echo "========================================================================="
 echo "========================================================================="
 echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
 Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
-read_with_prompt LevelName "Nombre del Nivel" Bedrock level
-echo "========================================================================="
+read -p "Nombre del Nivel: " LevelName
+if [ "$LevelName" != "" ]
+then
+    echo -n "¿Nombre de Nivel: $LevelName -- aceptar? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+    sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
+    echo "========================================================================="
+    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
+    fi
+else
+    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel Actual ........ /'
+fi
+
+#echo "========================================================================="
+#echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
+#Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
+#read_with_prompt LevelName "Nombre del Nivel" Bedrock level
+#echo "========================================================================="
 
 echo "========================================================================="
 echo "Establece el modo de juego para nuevos jugadores (predeterminado survival): "
