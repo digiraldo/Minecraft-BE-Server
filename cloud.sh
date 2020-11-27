@@ -174,12 +174,35 @@ cd ~
       echo "Reiniciando Máquina o Servidor..."
     fi
 
+# Reiniciar el servidor?
+cd ~
+    echo -n "¿Reiniciar la máquina o servidor? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      sudo systemctl daemon-reload
+      sudo systemctl restart servername.service
+      sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Reiniciando Servidor: .... /'
+    fi
+
+
 echo "========================================================================="
 echo "El siguiente codigo es para montar el disco de la nube"
 echo "sudo rclone mount $RclonName: $croncmd --allow-other &"
 echo "========================================================================="
 sleep 4s
 
+echo "========================================================================="
+echo "Si vas a instalar o recuperar un mundo en este servidor, este debe estar en la nube cloudname"
+    echo -n "¿Iniciar Recuperacion de un Mundo? (y/n)"
+    read answer < /dev/tty
+    if [ "$answer" != "${answer#[Yy]}" ]; then
+      # Recuperar mundo e instalarlo en el servidor
+        echo "========================================================================="
+        echo "Iniciando Recuperación con cloud.sh"
+        echo "========================================================================="
+        sleep 3s
+        /bin/bash dirname/minecraftbe/servername/cloud.sh
+    fi
 
 # Adjuntar a la pantalla
 echo "Iniciando la consola con: screen -r servername"
