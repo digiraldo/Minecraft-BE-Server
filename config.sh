@@ -56,43 +56,43 @@ sleep 3s
 
 echo "========================================================================="
 echo "Usado como nombre del servidor (predeterminado Servidor): "
-echo "Valores permitidos: cualquier cadena: "
+Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
 read_with_prompt SerVer "Nombre del Servidor" Servidor
 echo "========================================================================="
 
 echo "========================================================================="
 echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
-echo "Valores permitidos: cualquier cadena: "
+Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
 read_with_prompt LevelName "Nombre del Nivel" Bedrock level
 echo "========================================================================="
 
 echo "========================================================================="
 echo "Establece el modo de juego para nuevos jugadores (predeterminado survival): "
-echo "Valores permitidos: "survival", "creative", o "adventure": "
+Print_Style "Valores permitidos: "survival", "creative", o "adventure": " "$CYAN"
 read_with_prompt GamMode "Modo del Juego" survival
 echo "========================================================================="
 
 echo "========================================================================="
 echo "Establece la dificultad del mundo (predeterminado easy): "
-echo "Valores permitidos: "peaceful", "easy", "normal", o "hard": "
+Print_Style "Valores permitidos: "peaceful", "easy", "normal", o "hard": " "$CYAN"
 read_with_prompt Difficult "Dificultad del Mundo" easy
 echo "========================================================================="
 
 echo "========================================================================="
 echo "Si es verdadero (true), se pueden usar trucos como comandos (predeterminado false): "
-echo "Valores permitidos: "true" o "false": "
+Print_Style "Valores permitidos: "true" o "false": " "$CYAN"
 read_with_prompt AllowCheats "Usar Trucos" false
 echo "========================================================================="
 
 echo "========================================================================="
 echo "El número máximo de jugadores que pueden jugar en el servidor (predeterminado 10): "
-echo "Valores permitidos: Cualquier entero positivo: "
+Print_Style "Valores permitidos: Cualquier entero positivo: " "$CYAN"
 read_with_prompt MaxPlayers "Número Máximo de Jugadores" 10
 echo "========================================================================="
 
 echo "========================================================================="
 echo "Si es verdadero (true), debe dar permiso a jugadores en el archivo whitelist.json (predeterminado false): "
-echo "Valores permitidos: "true" o "false": "
+Print_Style "Valores permitidos: "true" o "false": " "$CYAN"
 read_with_prompt WhiteList "Permiso de Jugadores" false
 echo "========================================================================="
 
@@ -108,7 +108,7 @@ echo "========================================================================="
 
 echo "========================================================================="
 echo "Semilla (mundo aleatorio predeterminado): "
-echo "Valores permitidos: cualquier cadena: "
+Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
     echo -n "¿Deseas agregar un Códgo o Número de Semilla o Mundo? (y/n)"
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
@@ -126,7 +126,7 @@ echo "Valores permitidos: cualquier cadena: "
 
 echo "========================================================================="
 echo "========================================================================="
-echo "Configurando el Servidor: servername ..."
+Print_Style "Configurando el Servidor: servername ..." "$MAGENTA"
 sudo sed -i "/server-name=/c\server-name=$SerVer" server.properties
 sudo sed -i "/level-name=/c\level-name=$LevelName" server.properties
 sudo sed -i "/gamemode=/c\gamemode=$GamMode" server.properties
@@ -144,7 +144,7 @@ sudo systemctl restart servername.service
 
 sleep 2s
 
-Print_Style "Servidor: servername Configurado..." "$LIME_YELLOW"
+Print_Style "Servidor: servername Configurado..." "$GREEN"
 echo "========================================================================="
 sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Nombre del Servidor: .... /'
 sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
@@ -165,7 +165,7 @@ echo "========================================================================="
     if [ "$answer" != "${answer#[Yy]}" ]; then
       # Crear copia de seguridad en la nube cloudname
         echo "========================================================================="
-        echo "Iniciando copia de Seguridad con cloud.sh"
+        Print_Style "Iniciando copia de Seguridad con cloud.sh" "$YELLOW"
         echo "========================================================================="
         sleep 3s
         /bin/bash dirname/minecraftbe/servername/cloud.sh
