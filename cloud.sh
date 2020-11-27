@@ -194,10 +194,15 @@ cd ~
     if [ "$answer" != "${answer#[Yy]}" ]; then
       sudo systemctl daemon-reload
       sudo systemctl restart servername.service
+      # ingresar a la carpeta del servidor minecraft
+      cd ~
+      cd minecraftbe
+      cd servername
       sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Reiniciando Servidor: .... /'
 Print_Style "========================REINICIANDO SERVIDOR==============================" "$BLINK"
     fi
 
+cd ~
 echo "========================================================================="
 Print_Style "ADVERTENCIA: Si va a instalar o recuperar un mundo en este servidor," "$RED"
 Print_Style "este debe estar en la nube de su cuenta sincronizada de Google Drive," "$RED"
