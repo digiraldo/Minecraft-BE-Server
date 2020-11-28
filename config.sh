@@ -74,6 +74,7 @@ then
     sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
     fi
 else
+    sudo sed -i "/level-name=/c\level-name=Bedrock level" server.properties
     sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel Actual ........ /'
 fi
 
