@@ -68,7 +68,7 @@ Print_Style() {
 echo "========================================================================="
 echo "========================================================================="
 Print_Style "ADVERTENCIA: Antes de seguir debe iniciar sesión en" "$RED"
-Print_Style "drive, onedrive o la nube que va a utilizar Y deberá" "$RED"
+Print_Style "drive, onedrive o la nube que va a utilizar y deberá" "$RED"
 Print_Style "crear la carpeta donde realizará las copias de seguridad" "$RED"
 echo "_________________________________________________________________________"
 read -n1 -r -p "Presione cualquier tecla para continuar"
