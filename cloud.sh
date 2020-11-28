@@ -112,8 +112,7 @@ sleep 3s
 
 # Iniciando Configuración Montaje de Unidad
   cd ~
-  Print_Style "Realizar inicio de seccion en la cuenta de la nube para la carpeta $DirName/$CloudName ..." "$MAGENTA"
-
+  Print_Style "Iniciando Configuración de RClone para sincronizar la carpeta $DirName/$CloudName ..." "$MAGENTA"
   sleep 4s
 
   sudo rclone config
