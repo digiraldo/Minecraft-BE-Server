@@ -69,6 +69,8 @@ else
 fi
 
 # Configuración del nombre del servidor
+echo "==========================SERVIDORES MONTADOS============================"
+ls -l
 echo "========================================================================="
 echo "Ingrese un nombre corto para el servidor nuevo o existente..."
 echo "Se utilizará como nombre de la carpeta y el nombre del servicio..."
@@ -79,6 +81,7 @@ echo "========================================================================="
 if [ -d "$ServerName" ]; then
   echo "¡El directorio minecraftbe/$ServerName ya existe!  Actualizando scripts y configurando el servicio..."
 echo "========================================================================="
+speed 4s
   # Obtener la ruta del directorio de inicio y el nombre de usuario
   DirName=$(readlink -e ~)
   UserName=$(whoami)
