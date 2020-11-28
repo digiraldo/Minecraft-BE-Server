@@ -61,7 +61,7 @@ read_with_prompt SerVer "Nombre del Servidor" Servidor
 echo "========================================================================="
 
 echo "========================================================================="
-echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level): "
+echo "Usado como nombre de nivel o mundo (predeterminado Bedrock level con no (n) ): "
 Print_Style "Valores permitidos: cualquier cadena: " "$CYAN"
 read -p "Nombre del Nivel: " LevelName
 if [ "$LevelName" != "" ]
