@@ -202,7 +202,14 @@ cd ~
     read answer < /dev/tty
     if [ "$answer" != "${answer#[Yy]}" ]; then
       sudo systemctl daemon-reload
-      sudo systemctl restart servername.service
+    sudo systemctl stop servername.service
+      if screen -list | grep -q "servername"; then
+     # El servidor aún no se ha detenido después de 30 segundos, dígale a Screen que lo cierre
+     echo "El servidor de Minecraft aún no se ha cerrado, cerrando la pantalla..."
+     screen -S servername -X quit
+     sleep 10
+      fi
+    sudo systemctl start servername.service
       # ingresar a la carpeta del servidor minecraft
       cd ~
       cd minecraftbe
