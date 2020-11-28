@@ -100,12 +100,19 @@ sleep 3s
 # Restablecer mundos
 sudo systemctl daemon-reload
 sudo systemctl stop servername.service
+      if screen -list | grep -q "servername"; then
+     # El servidor aún no se ha detenido después de 30 segundos, dígale a Screen que lo cierre
+     Print_Style "El servidor de Minecraft aún no se ha cerrado. -- Cerrando la pantalla..." "$RED"
+     screen -S servername -X quit
+     sleep 10
+      fi
+
 cd ~
 cd minecraftbe
 cd servername
 sudo rm -rf worlds
 sudo tar -xf backups/$BackName
-sleep 5s
+sleep 4s
 
 # Verificar archivos sincronizados
 cd ~
@@ -130,14 +137,14 @@ then
     Print_Style "Actualizando Nombre de nivel a $WoName" "$MAGENTA"
     sudo sed -i "/level-name=/c\level-name=$WoName" server.properties
     echo "========================================================================="
-    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel: ....... /'
+    sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del nivel configuardo a: ....... /'
 else
     sudo sed -n "/level-name=/p" server.properties | sed 's/level-name=/Nombre del Nivel Actual ........ /'
 fi
 sudo sed -i "/level-seed=/c\level-seed=" server.properties
 sleep 3s
 
-Print_Style "========================REINICIANDO SERVIDOR==============================" "$REVERSE"
+Print_Style "========================INICIANDO SERVIDOR==============================" "$REVERSE"
 
 sleep 2s
 
