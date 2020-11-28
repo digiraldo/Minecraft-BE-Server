@@ -53,8 +53,7 @@ Print_Style() {
 echo "========================================================================="
 Print_Style "ADVERTENCIA: Si va a instalar o recuperar un mundo en este servidor," "$RED"
 Print_Style "este debe estar en la nube, por lo cual se requiere que inicie seccion" "$RED"
-Print_Style "y suba el archivo y espere a que cargue, más adelante se le preguntará" "$RED"
-Print_Style "si ha subido el archivo o mundo a su nube por si no lo ha subido" "$RED"
+Print_Style "y suba el archivo y espere a que cargue." "$RED"
 read -n1 -r -p "Presione cualquier tecla para continuar"
 sleep 4s
 
@@ -66,6 +65,19 @@ Print_Style "Espere un momento..." "$BLUE"
 echo "========================================================================="
 sleep 3s
 
+# Iniciar o comprobar inicio de Fuse en RClone
+echo "========================================================================="
+if [ -d dirname/cloudname/foldername/ ];
+then
+Print_Style "La carpeta cloudname/foldername esta montada..." "$GREEN"
+else
+sudo rclone mount rclonname: dirname/cloudname --allow-other &
+Print_Style "Montando RClone con Fuse..." "$YELLOW"
+sudo rclone mount rclonname: dirname/cloudname --allow-other &
+fi
+echo "========================================================================="
+sleep 3s
+
 # Verificar archivos sincronizados
 cd ~
 cd cloudname
@@ -74,26 +86,6 @@ echo "========================================================================="
 Print_Style "==========================ARCHIVOS EN LA NUBE============================" "$GREEN"
 ls -lt
 echo "========================================================================="
-
-echo "========================================================================="
-    echo -n "Si no ve el Mundo, súbelo a la nube y confirma con si (y) para visualizarlo (y/n)"
-    read answer < /dev/tty
-    if [ "$answer" != "${answer#[Yy]}" ]; then
-      # Escanear la nube cloudname/foldername
-      Print_Style "Buscando respaldos en su nube dirname/cloudname/foldername" "$CYAN"
-      Print_Style "Espere un momento..." "$BLUE"
-      echo "========================================================================="
-      sleep 4s
-      cd ~
-      cd cloudname
-      cd foldername
-        echo "========================================================================="
-        Print_Style "Iniciando Escaneo de la nube cloudname/foldername" "$CYAN"
-        Print_Style "==========================ARCHIVOS EN LA NUBE============================" "$GREEN"
-        ls -lt
-        echo "========================================================================="
-        sleep 3s
-    fi
 
 echo "-------------------------------------------------------------------------"
 Print_Style "Escriba aquí el nombre del mundo a restaurar" "$CYAN"
