@@ -151,13 +151,20 @@ echo "========================================================================="
 Print_Style "Configurando inicio de Fuse en Crontab..." "$CYAN"
 echo "$cronjob"
 echo "========================================================================="
-sleep 4s
+sleep 3s
 
+# Iniciar o comprobar inicio de Fuse en RClone
+echo "========================================================================="
+if [ -d dirname/$CloudName/$FolderName/ ];
+then
+Print_Style "La carpeta cloudname/foldername esta montada..." "$GREEN"
+else
 sudo rclone mount $RclonName: $croncmd --allow-other &
 Print_Style "Montando RClone con Fuse..." "$YELLOW"
-Print_Style "rclone mount $RclonName: $croncmd --allow-other &" "$MAGENTA"
+echo "rclone mount $RclonName: $croncmd --allow-other &"
+fi
 echo "========================================================================="
-sleep 4s
+sleep 3s
 
 # Verificar archivos sincronizados
 cd ~
