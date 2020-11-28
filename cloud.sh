@@ -157,11 +157,13 @@ sleep 3s
 echo "========================================================================="
 if [ -d dirname/$CloudName/$FolderName/ ];
 then
-Print_Style "La carpeta cloudname/foldername esta montada..." "$GREEN"
+Print_Style "La carpeta dirname/$CloudName/$FolderName esta montada..." "$GREEN"
 else
 sudo rclone mount $RclonName: $croncmd --allow-other &
 Print_Style "Montando RClone con Fuse..." "$YELLOW"
 echo "rclone mount $RclonName: $croncmd --allow-other &"
+sleep 3s
+Print_Style "Carpeta dirname/$CloudName/$FolderName montada. -- Ingresando al Directorio..." "$GREEN"
 fi
 echo "========================================================================="
 sleep 3s
@@ -170,7 +172,7 @@ sleep 3s
 cd ~
 cd $CloudName
 echo "========================================================================="
-Print_Style "==================ARCHIVOS Y DIRECTORIOS DE LA NUBE======================" "$GREEN"
+Print_Style "==============ARCHIVOS Y DIRECTORIOS DE LA NUBE ENCONTRADOS==============" "$GREEN"
 ls -l
 echo "========================================================================="
 sleep 8s
