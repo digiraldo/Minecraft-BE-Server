@@ -186,15 +186,6 @@ sudo sed -n "/sudo rsync -avz/p" start.sh
 echo "========================================================================="
 sleep 5s
 
-# Reiniciar la maquina?
-cd ~
-    echo -n "¿Reiniciar la máquina o computador? (y/n)"
-    read answer < /dev/tty
-    if [ "$answer" != "${answer#[Yy]}" ]; then
-      sudo reboot
-Print_Style "========================REINICIANDO MÁQUINA==============================" "$REVERSE"
-    fi
-
 # Reiniciar el servidor?
 cd ~
     echo -n "¿Reiniciar el Servidor Minecraft? (y/n)"
