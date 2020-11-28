@@ -157,8 +157,17 @@ sudo sed -i "/server-port=/c\server-port=$PortIPV4" server.properties
 sudo sed -i "/server-portv6=/c\server-portv6=$PortIPV6" server.properties
 
 sleep 1s
+sudo sed -n "/server-name=/p" server.properties | sed 's/server-name=/Para realizar los cambios se reiniciará el Servidor: .... /'
+sleep 2s
 sudo systemctl daemon-reload
-sudo systemctl restart servername.service
+sudo systemctl stop servername.service
+if screen -list | grep -q "servername"; then
+     # El servidor aún no se ha detenido después de 30 segundos, dígale a Screen que lo cierre
+     Print_Style "El servidor de Minecraft aún no se ha cerrado. -- Cerrando la pantalla..." "$RED"
+     screen -S servername -X quit
+     sleep 10
+      fi
+sudo systemctl start servername.service
 
 sleep 2s
 
