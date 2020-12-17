@@ -91,7 +91,7 @@ speed 4s
   echo "El directorio del servidor es: $DirName/minecraftbe/$ServerName"
 echo "========================================================================="
   # Eliminar scripts existentes
-  sudo rm -rf start.sh stop.sh restart.sh cloud.sh back.sh
+  sudo rm -rf start.sh stop.sh restart.sh cloud.sh back.sh config.sh
 
   # Descarga start.sh desde el repositorio
   echo "Tomando start.sh del repositorio..."
