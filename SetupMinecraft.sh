@@ -49,6 +49,7 @@ sudo apt-get install screen unzip wget -y
 sudo apt-get install net-tools -y
 sudo apt-get install libcurl4 -y
 sudo apt-get install openssl -y
+sudo apt-get install zip gzip tar -y
 
 # Verifique si el directorio principal del servidor de Minecraft ya existe
 cd ~
